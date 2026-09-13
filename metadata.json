@@ -1,0 +1,6 @@
+{
+  "name": "House Of Form",
+  "description": "House Of Form is a premium bespoke contemporary furniture house with Italian design sensibility, Indian craftsmanship, and The Material Atelier reservation experience.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

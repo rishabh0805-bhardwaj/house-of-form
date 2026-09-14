@@ -16,6 +16,7 @@ import { CraftedInIndiaView } from './components/CraftedInIndiaView';
 import { DigitalMaterialExperience } from './components/DigitalMaterialExperience';
 import { AdminCRMSuite } from './components/AdminCRMSuite';
 import { MaterialAtelierModal } from './components/MaterialAtelierModal';
+import { WishlistDrawer } from './components/WishlistDrawer';
 
 const AppContent: React.FC = () => {
   const { currentView } = useStore();
@@ -50,6 +51,9 @@ const AppContent: React.FC = () => {
 
       {/* Global The Material Atelier Reservation Modal */}
       <MaterialAtelierModal />
+
+      {/* Global Wishlist Curation Drawer */}
+      <WishlistDrawer />
     </div>
   );
 };

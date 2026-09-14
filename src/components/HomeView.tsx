@@ -16,6 +16,7 @@ import {
   Check,
   ArrowUpRight,
 } from 'lucide-react';
+import { MotionFadeIn } from './MotionFadeIn';
 
 export const HomeView: React.FC = () => {
   const {
@@ -51,7 +52,7 @@ export const HomeView: React.FC = () => {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10">
-          <div className="max-w-3xl space-y-6">
+          <MotionFadeIn distance={28} duration={0.9} className="max-w-3xl space-y-6">
             
             <div className="inline-flex items-center space-x-2 text-[11px] tracking-[0.3em] uppercase text-[#C5A880] font-medium border-b border-[#C5A880]/40 pb-1">
               <span>Bespoke Luxury Furniture House</span>
@@ -99,13 +100,13 @@ export const HomeView: React.FC = () => {
               </button>
             </div>
 
-          </div>
+          </MotionFadeIn>
         </div>
       </section>
 
       {/* 2. BRAND PHILOSOPHY */}
       <section className="py-20 lg:py-28 border-b border-[#E6DFD5] bg-[#F4EFEB]">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+        <MotionFadeIn distance={24} duration={0.8} className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           <span className="text-[10px] tracking-[0.3em] uppercase text-[#A6865A] font-semibold block">
             The House Of Form Philosophy
           </span>
@@ -142,27 +143,30 @@ export const HomeView: React.FC = () => {
               <p className="text-[11px] text-[#736B63] mt-1">Seasoned indigenous hardwoods and master Indian hand-upholstery.</p>
             </div>
           </div>
-        </div>
+        </MotionFadeIn>
       </section>
 
       {/* 3. FLAGSHIP SPOTLIGHT: THE VELORA */}
       <section className="py-20 lg:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          <div className="lg:col-span-7 relative group">
-            <div className="aspect-[16/10] bg-[#EFECE6] border border-[#E6DFD5] overflow-hidden">
-              <img
-                src={flagship.images.hero}
-                alt={flagship.name}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-              />
-            </div>
-            <div className="absolute top-4 left-4 bg-[#191816] text-[#FBF9F5] px-3.5 py-1.5 text-[10px] tracking-[0.2em] uppercase font-medium">
-              Flagship Collection
-            </div>
+          <div className="lg:col-span-7">
+            <MotionFadeIn distance={24} duration={0.8} className="relative group">
+              <div className="aspect-[16/10] bg-[#EFECE6] border border-[#E6DFD5] overflow-hidden">
+                <img
+                  src={flagship.images.hero}
+                  alt={flagship.name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+              </div>
+              <div className="absolute top-4 left-4 bg-[#191816] text-[#FBF9F5] px-3.5 py-1.5 text-[10px] tracking-[0.2em] uppercase font-medium">
+                Flagship Collection
+              </div>
+            </MotionFadeIn>
           </div>
 
-          <div className="lg:col-span-5 space-y-6">
+          <div className="lg:col-span-5">
+            <MotionFadeIn distance={24} delay={0.15} duration={0.8} className="space-y-6">
             <div>
               <span className="text-[10px] tracking-[0.25em] uppercase text-[#A6865A] font-semibold block mb-1">
                 {flagship.primaryCategory}
@@ -206,6 +210,7 @@ export const HomeView: React.FC = () => {
                 <span>Browse All Sofas</span>
               </button>
             </div>
+            </MotionFadeIn>
           </div>
 
         </div>
@@ -213,7 +218,7 @@ export const HomeView: React.FC = () => {
 
       {/* 4. ARCHITECTURAL CRAFTSMANSHIP & BESPOKE STANDARDS */}
       <section className="bg-[#191816] text-[#FBF9F5] py-20 lg:py-24 border-y border-[#2C2926] relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <MotionFadeIn distance={24} duration={0.8} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             <div className="lg:col-span-6 space-y-6">
@@ -305,12 +310,12 @@ export const HomeView: React.FC = () => {
             </div>
 
           </div>
-        </div>
+        </MotionFadeIn>
       </section>
 
       {/* 5. EDITORIAL PIECE: WHY WAIT FOR ITALY? */}
       <section className="py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="border border-[#E6DFD5] bg-white p-8 sm:p-14 space-y-6">
+        <MotionFadeIn distance={24} duration={0.8} className="border border-[#E6DFD5] bg-white p-8 sm:p-14 space-y-6">
           <span className="text-[10px] tracking-[0.3em] uppercase text-[#A6865A] font-semibold block">
             Campaign Narrative
           </span>
@@ -340,12 +345,12 @@ export const HomeView: React.FC = () => {
             <span>✓ Bespoke Millimeter Proportions</span>
             <span>✓ Dedicated Local After-Sales & Re-upholstery</span>
           </div>
-        </div>
+        </MotionFadeIn>
       </section>
 
       {/* 6. CRAFTED IN INDIA */}
       <section className="bg-[#F4EFEB] py-20 border-t border-[#E6DFD5]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <MotionFadeIn distance={24} duration={0.8} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             <div className="lg:col-span-5 space-y-5">
@@ -389,12 +394,12 @@ export const HomeView: React.FC = () => {
             </div>
 
           </div>
-        </div>
+        </MotionFadeIn>
       </section>
 
       {/* 7. FINAL CALLOUT */}
       <section className="py-24 bg-[#191816] text-[#FBF9F5] text-center">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <MotionFadeIn distance={24} duration={0.8} className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <span className="text-[10px] tracking-[0.3em] uppercase text-[#C5A880] font-semibold">
             Bespoke Creation
           </span>
@@ -425,7 +430,7 @@ export const HomeView: React.FC = () => {
               Schedule Bespoke Consultation
             </button>
           </div>
-        </div>
+        </MotionFadeIn>
       </section>
 
     </div>

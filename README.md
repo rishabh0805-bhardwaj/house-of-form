@@ -18,21 +18,41 @@
 - **Session Intelligence**: The entrance animation is recorded via `sessionStorage` (`hof_brand_animated`), ensuring an impactful first impression while maintaining friction-free subsequent navigation.
 - **Two-Tier Header Architecture**: Features a scroll-reactive primary header strip and a pinned sticky category navigation bar.
 
-### 2. Category & Curated Collection Exploration
-- **Architectural Categories**: Seamless browsing across Sofas, Lounge Chairs, Dining & Coffee Tables, Credenzas & Storage, and Sculptural Beds.
-- **Detailed Specifications**: Custom dimensions in millimeters, solid timber options (Burmese Teak, American Walnut, White Oak), and Italian upholstery fabrics.
-- **Live Search & Filtering**: Instant search and collection filtering across design lines.
+### 2. The Velora — Flagship Product Master Sheet & Technical Dossier
+- **Exclusive Flagship Catalogue**: Centered on **Product 01 — The Velora** (`HOF-SF-VLR-001`), an Italian-inspired curved lounge sofa synthesized with bespoke Indian craftsmanship.
+- **Architectural Studio vs. Master Dossier Modes**: Toggle between an interactive studio view (360° perspective viewpoints, configuration swatches, CAD elevation diagrams) and the comprehensive **Master Technical Dossier**.
+- **Comprehensive Master Dossier**: 28-section technical and editorial dossier covering:
+  - **The Design Philosophy**: Core principles (Reduce unnecessary, refine proportion, amplify comfort).
+  - **Ergonomic Proportions & Comfort**: 66cm deep seat, 42-45cm seat height, multi-density high-resilience foam core with feather-down envelope.
+  - **4 Configurations Schedule**: Uno (1 Seater), Due (2 Seater), Tre (3 Seater Flagship), and Grande (4 Seater) with live metric (cm) and imperial (inches) conversions.
+  - **Bespoke Customization**: Custom millimeter dimensions, COM (Customer's Own Material), and plinth finish adaptations.
+  - **Material & Frame Construction**: Kiln-dried Indian Sal & European Birch hardwood frame, Pirelli elastic webbing, and Martindale 45,000+ upholstery.
+  - **Delivery & White-Glove Installation**: 6-stage staircase-tested delivery workflow across Pan-India metro centers.
+  - **WhatsApp Catalogue Generator**: Instant one-click formatted sales copy for client advisors and interior designers.
+  - **JSON-LD Schema Markup**: Full schema.org Product structured data preview for search engines.
 
 ### 3. Bespoke Made-to-Order Reservation Flow
 - **Piece Reservation**: Secure reservation fee with 100% credit applied toward the final bespoke fabrication.
 - **Contextual Swatch Kit Reassurance**: Complimentary tactile material swatch box delivered to client doorsteps within 48 hours to confirm textures, grains, and finishes before workshop crafting begins.
 - **Architectural Consultation**: Direct appointment scheduler with dedicated spatial consultants and interior architects.
 
-### 4. Digital Material Atelier
-- Interactive visualization of premium materials including Bouclé, Italian Full-Grain Leathers, Velvet, Travertine Marble, and Solid Hardwood finishes.
-- Tactile descriptors detailing Martindale abrasion ratings, origin stories, and grain characteristics.
+### 4. Digital Material Atelier & Interactive Virtual Tour Guide
+- **Interactive Tour Guide**: Architectural workbench walkthrough featuring clickable hot-spots that reveal micro-details, macro-texture zoom inspection, and technical specifications for:
+  - Solid Wood Grain & Kiln-Seasoned Joinery (Canaletto Walnut & Burma Teak)
+  - Loom Textiles & Como Heavy Bouclé (Martindale 45,000+ endurance)
+  - Architectural Metal Finishes (High-vacuum PVD brushed brass & patinated bronze)
+  - Full-Grain Italian Leathers (Semi-aniline Vicenza hides)
+  - Monolithic Natural Stones (Roman Silver Travertine & Honed Calcite)
+- **Atelier Kit Reservation**: Physical magnetic presentation box delivered within 48 hours for tactile confirmation.
 
-### 5. Concierge & Client Admin Suite
+### 5. Curated Wishlist & Spatial Planning
+- **Wishlist State**: Local client curation allowing users to save and track pieces from product cards or the product detail view.
+- **Wishlist Drawer**: Interactive slide-out drawer displaying curated pieces, dimensional specs, starting prices, and direct links to bespoke consultation or atelier swatch reservation.
+
+### 6. Scroll-Triggered Fluid Motion
+- **Motion Fade-In**: Subtle, architectural scroll-triggered entrance animations powered by `motion/react` across all view components (`HomeView`, `ProductDetailView`, `CategoryView`, `CollectionView`, `CraftedInIndiaView`, `MaterialAtelierPage`), enhancing the digital showroom's premium aesthetic.
+
+### 7. Concierge & Client Admin Suite
 - Comprehensive concierge desk to review bespoke consultation bookings, material requests, order statuses, and custom dimension specifications.
 
 ---

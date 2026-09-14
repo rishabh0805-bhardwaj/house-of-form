@@ -7,7 +7,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useStore } from '../context/StoreContext';
-import { ChevronRight, Menu, X, ArrowRight } from 'lucide-react';
+import { ChevronRight, Menu, X, ArrowRight, Heart } from 'lucide-react';
 import { motion } from 'motion/react';
 
 interface FurnitureCategoryItem {
@@ -32,6 +32,8 @@ export const Header: React.FC = () => {
     selectedCategory,
     setSelectedCategory,
     isScrolled,
+    wishlist,
+    setIsWishlistDrawerOpen,
   } = useStore();
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -134,13 +136,27 @@ export const Header: React.FC = () => {
             </motion.p>
           </button>
 
-          {/* Right subtle concierge trigger */}
+          {/* Right subtle concierge trigger & Wishlist */}
           <motion.div
             initial={!hasAnimated ? { opacity: 0, x: 20 } : false}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-            className="hidden lg:flex absolute right-8 xl:right-12 items-center space-x-4"
+            className="hidden lg:flex absolute right-8 xl:right-12 items-center space-x-6"
           >
+            <button
+              onClick={() => setIsWishlistDrawerOpen(true)}
+              className="inline-flex items-center space-x-1.5 text-[11px] tracking-[0.2em] uppercase font-medium text-[#736B63] hover:text-[#191816] transition-colors cursor-pointer"
+              title="Curated Wishlist"
+            >
+              <Heart className={`w-3.5 h-3.5 ${wishlist.length > 0 ? 'fill-[#A6865A] text-[#A6865A]' : 'text-[#736B63]'}`} />
+              <span>Wishlist</span>
+              {wishlist.length > 0 && (
+                <span className="px-1.5 py-0.2 bg-[#A6865A] text-white text-[10px] font-mono rounded-full font-semibold">
+                  {wishlist.length}
+                </span>
+              )}
+            </button>
+
             <button
               onClick={() => navigateTo('bespoke')}
               className="inline-flex items-center text-[11px] tracking-[0.2em] uppercase font-medium text-[#736B63] hover:text-[#191816] transition-colors cursor-pointer"
@@ -233,14 +249,28 @@ export const Header: React.FC = () => {
               <span className="text-[11px] tracking-[0.2em] uppercase text-[#736B63] font-medium">
                 Navigation Menu
               </span>
-              <button
-                id="mobile-menu-toggle"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2 text-[#191816] hover:text-[#A6865A] cursor-pointer"
-                aria-label="Toggle Navigation Menu"
-              >
-                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
+              <div className="flex items-center space-x-2">
+                <button
+                  onClick={() => setIsWishlistDrawerOpen(true)}
+                  className="p-2 text-[#191816] hover:text-[#A6865A] relative cursor-pointer"
+                  aria-label="View Wishlist"
+                >
+                  <Heart className={`w-5 h-5 ${wishlist.length > 0 ? 'fill-[#A6865A] text-[#A6865A]' : 'text-[#736B63]'}`} />
+                  {wishlist.length > 0 && (
+                    <span className="absolute top-1 right-1 w-4 h-4 rounded-full bg-[#A6865A] text-white text-[9px] flex items-center justify-center font-mono">
+                      {wishlist.length}
+                    </span>
+                  )}
+                </button>
+                <button
+                  id="mobile-menu-toggle"
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  className="p-2 text-[#191816] hover:text-[#A6865A] cursor-pointer"
+                  aria-label="Toggle Navigation Menu"
+                >
+                  {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                </button>
+              </div>
             </div>
 
           </div>
@@ -310,9 +340,21 @@ export const Header: React.FC = () => {
             })}
           </div>
 
-          {/* Right side subtle descriptor */}
-          <div className="hidden lg:flex items-center text-[10px] tracking-[0.2em] uppercase text-[#968E85] pl-4">
-            <span>Bespoke Dimensions</span>
+          {/* Right side actions: Wishlist curation trigger */}
+          <div className="flex items-center space-x-3 pl-3 sm:pl-4">
+            <button
+              onClick={() => setIsWishlistDrawerOpen(true)}
+              className="inline-flex items-center space-x-1.5 px-3 py-1.5 text-[11px] tracking-[0.16em] uppercase text-[#191816] hover:text-[#A6865A] font-medium transition-colors cursor-pointer border border-[#E6DFD5] hover:border-[#A6865A] bg-white/80 shadow-xs"
+              title="Curated Wishlist"
+            >
+              <Heart className={`w-3.5 h-3.5 ${wishlist.length > 0 ? 'fill-[#A6865A] text-[#A6865A]' : 'text-[#736B63]'}`} />
+              <span className="hidden sm:inline">Wishlist</span>
+              {wishlist.length > 0 && (
+                <span className="px-1.5 py-0.2 bg-[#A6865A] text-white text-[10px] font-mono rounded-full font-semibold">
+                  {wishlist.length}
+                </span>
+              )}
+            </button>
           </div>
 
         </div>
@@ -390,6 +432,25 @@ export const Header: React.FC = () => {
             >
               <span>For Architects & Trade</span>
               <ChevronRight className="w-4 h-4 text-[#736B63]" />
+            </button>
+          </div>
+
+          {/* Curated Wishlist Quick Trigger */}
+          <div>
+            <button
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                setIsWishlistDrawerOpen(true);
+              }}
+              className="w-full flex items-center justify-between p-3.5 bg-white border border-[#D1C7BB] hover:border-[#A6865A] text-xs uppercase tracking-wider font-semibold text-[#191816] transition-colors cursor-pointer"
+            >
+              <span className="flex items-center space-x-2">
+                <Heart className={`w-4 h-4 ${wishlist.length > 0 ? 'fill-[#A6865A] text-[#A6865A]' : 'text-[#736B63]'}`} />
+                <span>Curated Wishlist</span>
+              </span>
+              <span className="font-mono text-[11px] text-[#A6865A] bg-[#F4EFEB] px-2.5 py-0.5 rounded-full font-bold">
+                {wishlist.length} {wishlist.length === 1 ? 'Piece' : 'Pieces'}
+              </span>
             </button>
           </div>
 

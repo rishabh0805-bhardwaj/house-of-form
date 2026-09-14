@@ -71,6 +71,14 @@ interface StoreContextType {
   settings: SystemSettings;
   analytics: AnalyticsData;
 
+  // Wishlist State
+  wishlist: string[];
+  isWishlistDrawerOpen: boolean;
+  setIsWishlistDrawerOpen: (open: boolean) => void;
+  toggleWishlist: (productId: string) => void;
+  isInWishlist: (productId: string) => boolean;
+  clearWishlist: () => void;
+
   // Actions
   createReservation: (submission: ReservationSubmission) => Promise<Reservation>;
   updateAtelierStatus: (reservationId: string, status: AtelierStatus) => void;
@@ -102,6 +110,7 @@ const STORAGE_KEY_RESERVATIONS = 'hof_reservations_v1';
 const STORAGE_KEY_LEADS = 'hof_leads_v1';
 const STORAGE_KEY_SETTINGS = 'hof_settings_v1';
 const STORAGE_KEY_ANALYTICS = 'hof_analytics_v1';
+const STORAGE_KEY_WISHLIST = 'hof_wishlist_v1';
 
 export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [currentView, setCurrentView] = useState<string>('home');
@@ -164,6 +173,43 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       return INITIAL_ANALYTICS;
     }
   });
+
+  const [wishlist, setWishlist] = useState<string[]>(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY_WISHLIST);
+      return saved ? JSON.parse(saved) : ['HOF-SF-VLR-001'];
+    } catch {
+      return ['HOF-SF-VLR-001'];
+    }
+  });
+  const [isWishlistDrawerOpen, setIsWishlistDrawerOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY_WISHLIST, JSON.stringify(wishlist));
+    } catch (e) {
+      console.warn('LocalStorage error', e);
+    }
+  }, [wishlist]);
+
+  const toggleWishlist = (productId: string) => {
+    setWishlist((prev) => {
+      const exists = prev.includes(productId);
+      if (exists) {
+        return prev.filter((id) => id !== productId);
+      } else {
+        return [...prev, productId];
+      }
+    });
+  };
+
+  const isInWishlist = (productId: string): boolean => {
+    return wishlist.includes(productId);
+  };
+
+  const clearWishlist = () => {
+    setWishlist([]);
+  };
 
   useEffect(() => {
     try {
@@ -540,10 +586,12 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     localStorage.removeItem(STORAGE_KEY_LEADS);
     localStorage.removeItem(STORAGE_KEY_SETTINGS);
     localStorage.removeItem(STORAGE_KEY_ANALYTICS);
+    localStorage.removeItem(STORAGE_KEY_WISHLIST);
     setReservations(INITIAL_RESERVATIONS);
     setLeads(INITIAL_LEADS);
     setSettings(INITIAL_SETTINGS);
     setAnalytics(INITIAL_ANALYTICS);
+    setWishlist(['HOF-SF-VLR-001']);
     setActiveReservationId('HOF-RES-2026-0042');
   };
 
@@ -564,6 +612,12 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         setIsReservationModalOpen,
         activeReservationId,
         setActiveReservationId,
+        wishlist,
+        isWishlistDrawerOpen,
+        setIsWishlistDrawerOpen,
+        toggleWishlist,
+        isInWishlist,
+        clearWishlist,
         products,
         materials,
         finishes,

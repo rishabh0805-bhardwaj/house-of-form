@@ -6,7 +6,8 @@
 
 import React, { useState, useMemo } from 'react';
 import { useStore } from '../context/StoreContext';
-import { ArrowRight, SlidersHorizontal, Sparkles, Check, Compass, ShieldCheck } from 'lucide-react';
+import { ArrowRight, SlidersHorizontal, Sparkles, Check, Compass, ShieldCheck, Heart } from 'lucide-react';
+import { MotionFadeIn } from './MotionFadeIn';
 
 interface CategoryMetadata {
   id: string;
@@ -81,6 +82,8 @@ export const CategoryView: React.FC = () => {
     setSelectedCategory,
     setSelectedProductId,
     setCurrentView,
+    isInWishlist,
+    toggleWishlist,
   } = useStore();
 
   const [sortBy, setSortBy] = useState<'featured' | 'price-asc' | 'price-desc'>('featured');
@@ -123,7 +126,7 @@ export const CategoryView: React.FC = () => {
       
       {/* 1. EDITORIAL CATEGORY HERO HEADER */}
       <section className="border-b border-[#E6DFD5] bg-[#F7F4EE] pt-14 pb-12 sm:pt-20 sm:pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+        <MotionFadeIn distance={24} duration={0.8} className="max-w-7xl mx-auto">
           
           {/* Breadcrumb path */}
           <div className="flex items-center space-x-2 text-[10px] tracking-[0.25em] uppercase text-[#736B63] mb-4">
@@ -222,7 +225,7 @@ export const CategoryView: React.FC = () => {
 
           </div>
 
-        </div>
+        </MotionFadeIn>
       </section>
 
       {/* 2. PRODUCT CARDS GRID */}
@@ -244,98 +247,123 @@ export const CategoryView: React.FC = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-            {filteredProducts.map((p) => {
+            {filteredProducts.map((p, idx) => {
               const minPrice = Math.min(...p.variants.map((v) => v.basePrice));
               const isHovered = hoveredProduct === p.id;
               const displayImage = isHovered ? (p.images.detail || p.images.hero) : p.images.hero;
+              const wishlisted = isInWishlist(p.id);
 
               return (
-                <div
+                <MotionFadeIn
                   key={p.id}
-                  id={`product-card-${p.id}`}
-                  onMouseEnter={() => setHoveredProduct(p.id)}
-                  onMouseLeave={() => setHoveredProduct(null)}
-                  onClick={() => handleProductClick(p.id)}
-                  className="group bg-white border border-[#E6DFD5] flex flex-col justify-between transition-all duration-300 hover:shadow-[0_12px_40px_-15px_rgba(0,0,0,0.08)] cursor-pointer"
+                  distance={20}
+                  duration={0.65}
+                  delay={(idx % 3) * 0.1}
                 >
-                  {/* Image Container with Zoom Feedback */}
-                  <div className="relative aspect-[4/3] bg-[#EBE7DF] overflow-hidden">
-                    <img
-                      src={displayImage}
-                      alt={p.name}
-                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                      loading="lazy"
-                    />
+                  <div
+                    id={`product-card-${p.id}`}
+                    onMouseEnter={() => setHoveredProduct(p.id)}
+                    onMouseLeave={() => setHoveredProduct(null)}
+                    onClick={() => handleProductClick(p.id)}
+                    className="group bg-white border border-[#E6DFD5] flex flex-col justify-between h-full transition-all duration-300 hover:shadow-[0_12px_40px_-15px_rgba(0,0,0,0.08)] cursor-pointer"
+                  >
+                    {/* Image Container with Zoom Feedback */}
+                    <div className="relative aspect-[4/3] bg-[#EBE7DF] overflow-hidden">
+                      <img
+                        src={displayImage}
+                        alt={p.name}
+                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                        loading="lazy"
+                      />
 
-                    {/* Subtle Category Badge */}
-                    <div className="absolute top-4 left-4 bg-[#191816]/85 backdrop-blur-sm text-[#FBF9F5] text-[9px] tracking-[0.2em] uppercase px-2.5 py-1 font-medium">
-                      {p.subcategory}
-                    </div>
-
-                    {/* Subtle hover quick view badge */}
-                    <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/95 text-[#191816] text-[10px] tracking-[0.16em] uppercase px-3 py-1.5 shadow-md flex items-center space-x-1 font-medium">
-                      <span>View Specifications</span>
-                      <ArrowRight className="w-3 h-3 text-[#A6865A]" />
-                    </div>
-                  </div>
-
-                  {/* Card Content */}
-                  <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                    
-                    <div>
-                      <div className="flex justify-between items-baseline">
-                        <span className="text-[10px] tracking-[0.2em] uppercase text-[#A6865A] font-medium">
-                          {p.primaryCategory}
-                        </span>
-                        <span className="text-[10px] text-[#968E85] font-mono">
-                          {p.variants.length} {p.variants.length > 1 ? 'Configurations' : 'Configuration'}
-                        </span>
+                      {/* Subtle Category Badge */}
+                      <div className="absolute top-4 left-4 bg-[#191816]/85 backdrop-blur-sm text-[#FBF9F5] text-[9px] tracking-[0.2em] uppercase px-2.5 py-1 font-medium">
+                        {p.subcategory}
                       </div>
 
-                      <h3 className="font-serif text-2xl text-[#191816] tracking-wide uppercase mt-1 group-hover:text-[#A6865A] transition-colors">
-                        {p.name}
-                      </h3>
+                      {/* Save to Wishlist Heart Trigger */}
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleWishlist(p.id);
+                        }}
+                        className={`absolute top-4 right-4 p-2 rounded-full backdrop-blur-md transition-all z-10 cursor-pointer shadow-xs ${
+                          wishlisted
+                            ? 'bg-white text-[#A6865A] ring-1 ring-[#A6865A]'
+                            : 'bg-white/80 text-[#736B63] hover:text-[#191816] hover:bg-white'
+                        }`}
+                        title={wishlisted ? 'Remove from Curated Wishlist' : 'Save to Curated Wishlist'}
+                        aria-label="Toggle Wishlist"
+                      >
+                        <Heart className={`w-4 h-4 ${wishlisted ? 'fill-[#A6865A]' : ''}`} />
+                      </button>
 
-                      <p className="text-xs text-[#736B63] italic mt-0.5">{p.tagline}</p>
-
-                      <p className="text-xs text-[#4A453F] mt-3 line-clamp-2 leading-relaxed">
-                        {p.productStory}
-                      </p>
+                      {/* Subtle hover quick view badge */}
+                      <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/95 text-[#191816] text-[10px] tracking-[0.16em] uppercase px-3 py-1.5 shadow-md flex items-center space-x-1 font-medium">
+                        <span>View Specifications</span>
+                        <ArrowRight className="w-3 h-3 text-[#A6865A]" />
+                      </div>
                     </div>
 
-                    {/* Pricing & Customization Guarantee */}
-                    <div className="pt-4 border-t border-[#E6DFD5] space-y-3">
+                    {/* Card Content */}
+                    <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                       
-                      <div className="flex justify-between items-baseline">
-                        <div>
-                          <span className="text-[9px] text-[#736B63] tracking-widest uppercase block">
-                            Starting From
+                      <div>
+                        <div className="flex justify-between items-baseline">
+                          <span className="text-[10px] tracking-[0.2em] uppercase text-[#A6865A] font-medium">
+                            {p.primaryCategory}
                           </span>
-                          <span className="font-serif text-xl text-[#191816] font-medium">
-                            ₹{minPrice.toLocaleString('en-IN')}
+                          <span className="text-[10px] text-[#968E85] font-mono">
+                            {p.variants.length} {p.variants.length > 1 ? 'Configurations' : 'Configuration'}
                           </span>
                         </div>
 
-                        <span className="text-[9px] text-[#A6865A] bg-[#F7F4EE] px-2 py-0.5 border border-[#E6DFD5] uppercase tracking-wider font-semibold">
-                          Bespoke Sizing
-                        </span>
+                        <h3 className="font-serif text-2xl text-[#191816] tracking-wide uppercase mt-1 group-hover:text-[#A6865A] transition-colors">
+                          {p.name}
+                        </h3>
+
+                        <p className="text-xs text-[#736B63] italic mt-0.5">{p.tagline}</p>
+
+                        <p className="text-xs text-[#4A453F] mt-3 line-clamp-2 leading-relaxed">
+                          {p.productStory}
+                        </p>
                       </div>
 
-                      {/* Action button */}
-                      <div className="pt-1">
-                        <button
-                          onClick={() => handleProductClick(p.id)}
-                          className="w-full bg-[#191816] hover:bg-[#A6865A] text-[#FBF9F5] text-[11px] tracking-[0.18em] uppercase py-3 font-medium transition-colors flex items-center justify-center space-x-2 cursor-pointer shadow-sm"
-                        >
-                          <span>Explore Piece & Customise</span>
-                          <ArrowRight className="w-3.5 h-3.5" />
-                        </button>
+                      {/* Pricing & Customization Guarantee */}
+                      <div className="pt-4 border-t border-[#E6DFD5] space-y-3">
+                        
+                        <div className="flex justify-between items-baseline">
+                          <div>
+                            <span className="text-[9px] text-[#736B63] tracking-widest uppercase block">
+                              Starting From
+                            </span>
+                            <span className="font-serif text-xl text-[#191816] font-medium">
+                              ₹{minPrice.toLocaleString('en-IN')}
+                            </span>
+                          </div>
+
+                          <span className="text-[9px] text-[#A6865A] bg-[#F7F4EE] px-2 py-0.5 border border-[#E6DFD5] uppercase tracking-wider font-semibold">
+                            Bespoke Sizing
+                          </span>
+                        </div>
+
+                        {/* Action button */}
+                        <div className="pt-1">
+                          <button
+                            onClick={() => handleProductClick(p.id)}
+                            className="w-full bg-[#191816] hover:bg-[#A6865A] text-[#FBF9F5] text-[11px] tracking-[0.18em] uppercase py-3 font-medium transition-colors flex items-center justify-center space-x-2 cursor-pointer shadow-sm"
+                          >
+                            <span>Explore Piece & Customise</span>
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+
                       </div>
 
                     </div>
-
                   </div>
-                </div>
+                </MotionFadeIn>
               );
             })}
           </div>
@@ -345,7 +373,7 @@ export const CategoryView: React.FC = () => {
 
       {/* 3. BESPOKE COMMISSION CALLOUT */}
       <section className="bg-[#191816] text-[#FBF9F5] py-16 px-4 sm:px-6 lg:px-8 border-t border-[#2C2926]">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <MotionFadeIn distance={24} duration={0.8} className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           <div className="lg:col-span-8 space-y-3">
             <span className="text-[10px] tracking-[0.25em] uppercase text-[#C5A880] font-semibold">
@@ -382,7 +410,7 @@ export const CategoryView: React.FC = () => {
             </button>
           </div>
 
-        </div>
+        </MotionFadeIn>
       </section>
 
     </div>

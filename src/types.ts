@@ -71,34 +71,188 @@ export interface DimensionSpec {
   heightCm: number;
   seatHeightCm: number;
   seatDepthCm: number;
+  insideSeatWidthCm?: number;
+  insideSeatDepthCm?: number;
   armHeightCm?: number;
+  backHeightCm?: number;
+  moduleWidthCm?: number;
+  moduleDepthCm?: number;
   widthIn: number;
   depthIn: number;
   heightIn: number;
   seatHeightIn: number;
   seatDepthIn: number;
+  insideSeatWidthIn?: number;
+  insideSeatDepthIn?: number;
   armHeightIn?: number;
+  backHeightIn?: number;
+  moduleWidthIn?: number;
+  moduleDepthIn?: number;
 }
 
 export interface ProductVariant {
   id: string;
   sku: string;
-  name: string; // e.g., "Velora Uno", "Velora Due", "Velora Tre", "Velora Grande"
-  seatingCapacity: string; // "1 Seater", "2 Seater", "3 Seater", "4 Seater / Grande"
+  name: string; // e.g., "Velora Uno", "Elyra 2 Seater — Left Arm"
+  seatingCapacity: string; // "1 Seater", "2 Seater", "2.5 Seater", "3 Seater", "4 Seater / Grande"
   dimensions: DimensionSpec;
   basePrice: number; // in INR
   description: string;
+  conceptSubtitle?: string;
+  applicationNotes?: string;
   isPopular?: boolean;
+  armOrientation?: 'Left Arm' | 'Right Arm';
+  tableOrientation?: 'Right Table' | 'Left Table';
+  orientation?: 'left' | 'right';
+  configurationType?: string;
+}
+
+export interface ProductMasterSheet {
+  productCode: string;
+  category: string;
+  subcategory: string;
+  designLanguage: string;
+  furnitureType: string;
+  configurationsSummary: string;
+  customisationStatus: string;
+  craftingStatus: string;
+  theDesign: {
+    headline: string;
+    subheadline: string;
+    paragraphs: string[];
+    closingStatement: string;
+  };
+  designPhilosophyDetails: {
+    headline: string;
+    mantra: string[];
+    keyCharacteristics: string[];
+    fullDescription: string;
+  };
+  productDescriptionSection: {
+    paragraphs: string[];
+    closingNotes: string[];
+  };
+  hofDifference: {
+    headline: string;
+    subheadline: string;
+    body: string[];
+    bespokePoints: { title: string; description: string }[];
+  };
+  dimensionSummary: {
+    technicalStatus: string;
+    notes: string;
+  };
+  ergonomicProportions: {
+    overallHeight: string;
+    seatHeight: string;
+    seatDepth: string;
+    overallDepth: string;
+    backrestAndArmFlow: string;
+  };
+  materialAndConstruction: {
+    frame: { status: string; specifications: string[] };
+    seating: { status: string; specifications: string[] };
+    upholstery: { status: string; specifications: string[] };
+    base: { status: string; specifications: string[] };
+    specificationNote: string;
+  };
+  upholsteryOptions: {
+    headline: string;
+    families: { name: string; items: string; badge: string; description: string }[];
+  };
+  finishOptions: {
+    upholsteryColor: string;
+    baseFinish: string;
+    contrastDetailing: string;
+    customUpholstery: string;
+  };
+  customisation: {
+    headline: string;
+    options: string[];
+    customFurnitureService: string;
+  };
+  idealApplications: {
+    residential: string[];
+    commercialHospitality: string[];
+  };
+  styleProfile: {
+    designStyle: string;
+    aesthetic: string;
+    silhouette: string;
+    visualWeight: string;
+    comfort: string;
+    character: string;
+    interiorCompatibility: string[];
+  };
+  whyWaitForItaly: {
+    headline: string;
+    bulletPoints: string[];
+    closingBrandLines: string[];
+  };
+  careInstructionsDetailed: {
+    generalCare: string[];
+    professionalCleaning: string;
+  };
+  deliveryAndInstallation: {
+    madeToOrderNote: string;
+    timelineFactors: string[];
+    deliveryWorkflow: string[];
+    packaging: string;
+    transportation: string;
+    installation: string;
+    siteAccess: string;
+    customOrders: string;
+  };
+  additionalInformation: Record<string, string>;
+  productTags: string[];
+  seo: {
+    title: string;
+    altGeoTitle: string;
+    metaDescription: string;
+    primaryKeywords: string[];
+    secondaryKeywords: string[];
+    longTailKeywords: string[];
+    geoLandingOpportunities: string[];
+  };
+  websiteProductCard: {
+    title: string;
+    subtitle: string;
+    description: string;
+    configurations: string;
+    badge: string;
+    ctaText: string;
+  };
+  shortMobileDescription: {
+    title: string;
+    subtitle: string;
+    description: string;
+    ctaText: string;
+  };
+  emotionalSalesCopy: {
+    headline: string;
+    subheadline: string;
+    stanzas: string[];
+  };
+  finalBrandSignature: {
+    brand: string;
+    lines: string[];
+    callout: string;
+    cta: string;
+  };
 }
 
 export interface Product {
   id: string;
   sku: string;
-  name: string; // e.g. "The Velora"
-  tagline: string; // "Bespoke Curved Lounge Sofa Collection"
-  primaryCategory: string; // "Luxury Lounge Sofas"
-  subcategory: string; // "Soft Contemporary / Curved Profile / Low Profile Lounge"
+  name: string; // e.g. "The Velora", "The Elyra"
+  tagline: string; // "Bespoke Curved Lounge Sofa Collection", "Bespoke Asymmetric Lounge Sofa"
+  productNo?: string; // "01", "02"
+  productCode?: string; // "VEL-01", "EW1"
+  primaryCategory: string; // "Contemporary Sofas", "Luxury Lounge Sofas"
+  subcategory: string; // "Architectural Contemporary / Asymmetric Sofa"
   startingPrice: number;
+  designConcept?: string;
+  designTags?: string[];
   attributes: {
     silhouette: string;
     back: string;
@@ -106,6 +260,34 @@ export interface Product {
     base: string;
     seat: string;
     designEra: string;
+    sideSurface?: string;
+    profile?: string;
+    designCharacter?: string;
+    style?: string;
+    customization?: string;
+    statementLevel?: string;
+  };
+  visualClassification?: {
+    primaryCategory: string;
+    subcategory: string;
+    silhouette: string;
+    back: string;
+    arm: string;
+    base: string;
+    seat: string;
+    sideSurface: string;
+    profile: string;
+    designCharacter: string;
+    style: string;
+    customization: string;
+    statementLevel: string;
+  };
+  materialDirection?: {
+    upholstery: string;
+    timber: string;
+    base: string;
+    accent: string;
+    notes?: string;
   };
   productStory: string;
   designPhilosophy: string;
@@ -121,6 +303,12 @@ export interface Product {
     detail: string;
     lifestyle: string;
     dimensionDiagram: string;
+    top?: string;
+    elevated?: string;
+    techSheet1?: string;
+    techSheet2?: string;
+    techSheet3?: string;
+    [key: string]: string | undefined;
   };
   variants: ProductVariant[];
   compatibleMaterialIds: string[];
@@ -130,6 +318,7 @@ export interface Product {
   deliveryInfo: string;
   customizationScope: string[];
   faqs: { question: string; answer: string }[];
+  masterSheet?: ProductMasterSheet;
 }
 
 export interface Material {

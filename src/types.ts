@@ -549,3 +549,73 @@ export interface AnalyticsData {
   totalAdjustedValue: number;
   pipelineValue: number;
 }
+
+export interface ArchitecturalProject {
+  id: string;
+  title: string;
+  subtitle: string;
+  location: string;
+  city: string;
+  state: string;
+  year: string;
+  typology: 'Penthouse' | 'Luxury Villa' | 'Modernist Duplex' | 'Private Salon' | 'Hospitality Suite';
+  architect: string;
+  interiorDesign: string;
+  featuredProduct: string;
+  featuredProductId: string;
+  furnitureCommissioned: string[];
+  heroImage: string;
+  galleryImages: string[];
+  narrative: string;
+  architectQuote: {
+    quote: string;
+    author: string;
+    role: string;
+  };
+  specifications: {
+    carpetArea: string;
+    curatedPalette: string;
+    leadTimeDelivered: string;
+    customModifications: string;
+  };
+}
+
+export interface JournalArticle {
+  id: string;
+  slug: string;
+  title: string;
+  subtitle: string;
+  category: 'Design Philosophy' | 'Craftsmanship' | 'Material Science' | 'Interior Architecture' | 'Industry Perspectives';
+  author: {
+    name: string;
+    role: string;
+    avatar?: string;
+  };
+  date: string;
+  readTime: string;
+  heroImage: string;
+  excerpt: string;
+  content: {
+    sectionTitle?: string;
+    paragraphs: string[];
+    pullQuote?: string;
+    image?: string;
+    caption?: string;
+  }[];
+  relatedProductIds: string[];
+  tags: string[];
+}
+
+export interface TradePartnerInquiry {
+  firmName: string;
+  leadArchitect: string;
+  email: string;
+  phone: string;
+  city: string;
+  gstin?: string;
+  projectType: string;
+  projectTimeline: string;
+  interestInCad: boolean;
+  requestPhysicalAtelier: boolean;
+  projectNotes?: string;
+}

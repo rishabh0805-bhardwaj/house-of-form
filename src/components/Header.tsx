@@ -7,7 +7,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useStore } from '../context/StoreContext';
-import { ChevronRight, Menu, X, ArrowRight, Heart } from 'lucide-react';
+import { ChevronRight, Menu, X, ArrowRight, Heart, Globe } from 'lucide-react';
 import { motion } from 'motion/react';
 
 interface FurnitureCategoryItem {
@@ -34,6 +34,7 @@ export const Header: React.FC = () => {
     isScrolled,
     wishlist,
     setIsWishlistDrawerOpen,
+    setIsSeoDrawerOpen,
   } = useStore();
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -155,6 +156,16 @@ export const Header: React.FC = () => {
                   {wishlist.length}
                 </span>
               )}
+            </button>
+
+            <button
+              id="header-seo-suite-btn"
+              onClick={() => setIsSeoDrawerOpen(true)}
+              className="inline-flex items-center space-x-1 text-[11px] tracking-[0.2em] uppercase font-medium text-[#736B63] hover:text-[#191816] transition-colors cursor-pointer"
+              title="Inspect SEO Titles, Meta Descriptions & Keywords"
+            >
+              <Globe className="w-3.5 h-3.5 text-[#A6865A]" />
+              <span>SEO</span>
             </button>
 
             <button

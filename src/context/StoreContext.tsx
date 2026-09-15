@@ -79,6 +79,10 @@ interface StoreContextType {
   isInWishlist: (productId: string) => boolean;
   clearWishlist: () => void;
 
+  // SEO & Metadata Discovery Suite
+  isSeoDrawerOpen: boolean;
+  setIsSeoDrawerOpen: (open: boolean) => void;
+
   // Actions
   createReservation: (submission: ReservationSubmission) => Promise<Reservation>;
   updateAtelierStatus: (reservationId: string, status: AtelierStatus) => void;
@@ -183,6 +187,7 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
   });
   const [isWishlistDrawerOpen, setIsWishlistDrawerOpen] = useState<boolean>(false);
+  const [isSeoDrawerOpen, setIsSeoDrawerOpen] = useState<boolean>(false);
 
   useEffect(() => {
     try {
@@ -618,6 +623,8 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         toggleWishlist,
         isInWishlist,
         clearWishlist,
+        isSeoDrawerOpen,
+        setIsSeoDrawerOpen,
         products,
         materials,
         finishes,

@@ -7,7 +7,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useStore } from '../context/StoreContext';
-import { ChevronRight, Menu, X, ArrowRight, Heart, Globe } from 'lucide-react';
+import { ChevronRight, Menu, X, ArrowRight, Heart } from 'lucide-react';
 import { motion } from 'motion/react';
 
 interface FurnitureCategoryItem {
@@ -34,7 +34,6 @@ export const Header: React.FC = () => {
     isScrolled,
     wishlist,
     setIsWishlistDrawerOpen,
-    setIsSeoDrawerOpen,
   } = useStore();
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -86,104 +85,40 @@ export const Header: React.FC = () => {
             : 'max-h-[600px] opacity-100 translate-y-0'
         }`}
       >
-        {/* Top Brand Notification Banner */}
-        <div className="bg-[#191816] text-[#D1C7BB] text-[10px] sm:text-[11px] tracking-[0.2em] uppercase py-2 px-4 text-center font-medium border-b border-[#2C2926] flex items-center justify-center gap-3">
-          <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#C5A880] animate-pulse" />
-          <span>Italian Design. Bespoke Craftsmanship. Made in India.</span>
-          <span className="hidden md:inline text-[#C5A880]/70">— Global Design. Indian Intelligence. Bespoke to You.</span>
-        </div>
-
-        {/* FULL-WIDTH BRAND NAME STRIP — Majestic, commanding, centered editorial masthead */}
-        <div className="w-full bg-[#FBF9F5] border-b border-[#E6DFD5] py-7 sm:py-9 md:py-11 relative flex items-center justify-center overflow-hidden">
-          {/* Left subtle brand pillar */}
-          <motion.div
-            initial={!hasAnimated ? { opacity: 0, x: -20 } : false}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-            className="hidden lg:flex absolute left-8 xl:left-12 items-center text-[10px] tracking-[0.25em] uppercase text-[#8C8379] font-medium"
-          >
-            <span>Bespoke Architecture</span>
-          </motion.div>
-
-          {/* Centered Large Grand Brand Title with one-time move-in effect */}
+        {/* FULL-WIDTH BRAND NAME STRIP — ONLY the brand name, architectural, serene & iconic */}
+        <div className="w-full bg-[#FBF9F5] border-b border-[#E6DFD5] py-8 sm:py-10 md:py-12 px-4 flex items-center justify-center">
           <button
             id="brand-hero-strip-btn"
             onClick={() => navigateTo('home')}
-            className="text-center group cursor-pointer flex flex-col items-center px-4"
+            className="text-center group cursor-pointer flex flex-col items-center max-w-full focus:outline-none"
           >
             <motion.h1
-              initial={!hasAnimated ? { opacity: 0, y: 32, filter: 'blur(4px)' } : false}
+              initial={!hasAnimated ? { opacity: 0, y: 20, filter: 'blur(3px)' } : false}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               transition={{
-                duration: 1.25,
+                duration: 0.9,
                 ease: [0.16, 1, 0.3, 1],
-                delay: 0.1,
+                delay: 0.05,
               }}
-              className="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-[0.22em] sm:tracking-[0.28em] font-light text-[#191816] group-hover:text-[#A6865A] transition-colors uppercase select-none"
+              className="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-[0.18em] sm:tracking-[0.24em] font-light text-[#191816] group-hover:text-[#A6865A] transition-colors uppercase select-none leading-none"
             >
               HOUSE OF FORM
             </motion.h1>
-            <motion.p
-              initial={!hasAnimated ? { opacity: 0, y: 16 } : false}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 1.0,
-                ease: [0.16, 1, 0.3, 1],
-                delay: 0.38,
-              }}
-              className="text-[9px] sm:text-[11px] tracking-[0.35em] sm:tracking-[0.42em] uppercase text-[#736B63] font-medium mt-2 sm:mt-3"
-            >
-              Bespoke Furniture House • Milan & New Delhi
-            </motion.p>
           </button>
-
-          {/* Right subtle concierge trigger & Wishlist */}
-          <motion.div
-            initial={!hasAnimated ? { opacity: 0, x: 20 } : false}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-            className="hidden lg:flex absolute right-8 xl:right-12 items-center space-x-6"
-          >
-            <button
-              onClick={() => setIsWishlistDrawerOpen(true)}
-              className="inline-flex items-center space-x-1.5 text-[11px] tracking-[0.2em] uppercase font-medium text-[#736B63] hover:text-[#191816] transition-colors cursor-pointer"
-              title="Curated Wishlist"
-            >
-              <Heart className={`w-3.5 h-3.5 ${wishlist.length > 0 ? 'fill-[#A6865A] text-[#A6865A]' : 'text-[#736B63]'}`} />
-              <span>Wishlist</span>
-              {wishlist.length > 0 && (
-                <span className="px-1.5 py-0.2 bg-[#A6865A] text-white text-[10px] font-mono rounded-full font-semibold">
-                  {wishlist.length}
-                </span>
-              )}
-            </button>
-
-            <button
-              id="header-seo-suite-btn"
-              onClick={() => setIsSeoDrawerOpen(true)}
-              className="inline-flex items-center space-x-1 text-[11px] tracking-[0.2em] uppercase font-medium text-[#736B63] hover:text-[#191816] transition-colors cursor-pointer"
-              title="Inspect SEO Titles, Meta Descriptions & Keywords"
-            >
-              <Globe className="w-3.5 h-3.5 text-[#A6865A]" />
-              <span>SEO</span>
-            </button>
-
-            <button
-              onClick={() => navigateTo('bespoke')}
-              className="inline-flex items-center text-[11px] tracking-[0.2em] uppercase font-medium text-[#736B63] hover:text-[#191816] transition-colors cursor-pointer"
-            >
-              <span>Bespoke Inquiries</span>
-              <ArrowRight className="w-3 h-3 ml-1.5 text-[#A6865A]" />
-            </button>
-          </motion.div>
         </div>
 
-        {/* PRIMARY BRAND NAVIGATION BAR (Starts directly below the big brand strip) */}
+        {/* PRIMARY BRAND NAVIGATION BAR */}
         <header className="bg-[#FBF9F5] border-b border-[#E6DFD5]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4 flex items-center justify-between xl:justify-center relative">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
             
+            {/* Desktop Left Brand Accent / Atelier Stamp */}
+            <div className="hidden xl:flex items-center text-[10px] tracking-[0.25em] uppercase text-[#8C8379] font-medium w-44 shrink-0">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#A6865A] mr-2 shrink-0" />
+              <span>Bespoke Atelier</span>
+            </div>
+
             {/* Desktop Primary Navigation Links (Centered, balanced, elegant) */}
-            <nav className="hidden xl:flex items-center space-x-10 text-[12px] tracking-[0.2em] uppercase font-medium text-[#2C2926]">
+            <nav className="hidden xl:flex items-center justify-center space-x-7 2xl:space-x-9 text-[12px] tracking-[0.2em] uppercase font-medium text-[#2C2926] flex-1">
               <button
                 id="nav-collection"
                 onClick={() => {
@@ -255,20 +190,66 @@ export const Header: React.FC = () => {
               </button>
             </nav>
 
+            {/* Desktop Right: Elevated, "More Better" Wishlist Button (Zero overlap!) */}
+            <div className="hidden xl:flex items-center justify-end w-44 shrink-0">
+              <button
+                id="header-wishlist-btn"
+                onClick={() => setIsWishlistDrawerOpen(true)}
+                className={`group relative inline-flex items-center space-x-2.5 px-4 py-2 rounded-full border transition-all duration-200 cursor-pointer shadow-xs ${
+                  wishlist.length > 0
+                    ? 'bg-white border-[#A6865A] text-[#191816] hover:bg-[#F4EFEB]'
+                    : 'bg-white/90 border-[#D1C7BB] text-[#4A453F] hover:border-[#A6865A] hover:text-[#191816] hover:bg-white'
+                }`}
+                title={wishlist.length > 0 ? `Curated Wishlist (${wishlist.length} pieces)` : 'Curated Wishlist'}
+              >
+                <Heart
+                  className={`w-3.5 h-3.5 transition-transform group-hover:scale-110 ${
+                    wishlist.length > 0
+                      ? 'fill-[#A6865A] text-[#A6865A]'
+                      : 'text-[#736B63] group-hover:text-[#A6865A]'
+                  }`}
+                />
+                <span className="text-[11px] tracking-[0.18em] uppercase font-medium">
+                  Wishlist
+                </span>
+                {wishlist.length > 0 ? (
+                  <span className="inline-flex items-center justify-center min-w-[20px] h-[20px] px-1.5 text-[10px] font-mono font-bold text-white bg-[#191816] group-hover:bg-[#A6865A] rounded-full transition-colors">
+                    {wishlist.length}
+                  </span>
+                ) : (
+                  <span className="inline-flex items-center justify-center min-w-[18px] h-[18px] text-[9px] font-mono text-[#968E85] bg-[#F4EFEB] rounded-full">
+                    0
+                  </span>
+                )}
+              </button>
+            </div>
+
             {/* Mobile Controls */}
             <div className="xl:hidden flex items-center justify-between w-full">
-              <span className="text-[11px] tracking-[0.2em] uppercase text-[#736B63] font-medium">
-                Navigation Menu
-              </span>
-              <div className="flex items-center space-x-2">
+              <button
+                onClick={() => {
+                  setSelectedCategory('ALL');
+                  navigateTo('category-view');
+                }}
+                className="text-[11px] tracking-[0.2em] uppercase text-[#736B63] font-medium hover:text-[#191816]"
+              >
+                Explore Catalogue
+              </button>
+              <div className="flex items-center space-x-3">
                 <button
+                  id="mobile-header-wishlist-btn"
                   onClick={() => setIsWishlistDrawerOpen(true)}
-                  className="p-2 text-[#191816] hover:text-[#A6865A] relative cursor-pointer"
+                  className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full border border-[#D1C7BB] bg-white text-[#191816] text-[11px] tracking-wider uppercase font-medium hover:border-[#A6865A] cursor-pointer shadow-xs"
                   aria-label="View Wishlist"
                 >
-                  <Heart className={`w-5 h-5 ${wishlist.length > 0 ? 'fill-[#A6865A] text-[#A6865A]' : 'text-[#736B63]'}`} />
+                  <Heart
+                    className={`w-4 h-4 ${
+                      wishlist.length > 0 ? 'fill-[#A6865A] text-[#A6865A]' : 'text-[#736B63]'
+                    }`}
+                  />
+                  <span className="text-[10px] tracking-wider uppercase font-medium">Wishlist</span>
                   {wishlist.length > 0 && (
-                    <span className="absolute top-1 right-1 w-4 h-4 rounded-full bg-[#A6865A] text-white text-[9px] flex items-center justify-center font-mono">
+                    <span className="w-4 h-4 rounded-full bg-[#191816] text-white text-[9px] flex items-center justify-center font-mono font-bold">
                       {wishlist.length}
                     </span>
                   )}
@@ -351,18 +332,32 @@ export const Header: React.FC = () => {
             })}
           </div>
 
-          {/* Right side actions: Wishlist curation trigger */}
-          <div className="flex items-center space-x-3 pl-3 sm:pl-4">
+          {/* Right side actions: Enhanced Wishlist curation trigger */}
+          <div className="flex items-center space-x-3 pl-3 sm:pl-4 shrink-0">
             <button
               onClick={() => setIsWishlistDrawerOpen(true)}
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 text-[11px] tracking-[0.16em] uppercase text-[#191816] hover:text-[#A6865A] font-medium transition-colors cursor-pointer border border-[#E6DFD5] hover:border-[#A6865A] bg-white/80 shadow-xs"
-              title="Curated Wishlist"
+              className={`group inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full border transition-all duration-200 cursor-pointer shadow-xs ${
+                wishlist.length > 0
+                  ? 'bg-white border-[#A6865A] text-[#191816] hover:bg-[#F4EFEB]'
+                  : 'bg-white/95 border-[#D1C7BB] text-[#4A453F] hover:border-[#A6865A] hover:text-[#191816]'
+              }`}
+              title={wishlist.length > 0 ? `Curated Wishlist (${wishlist.length} pieces)` : 'Curated Wishlist'}
             >
-              <Heart className={`w-3.5 h-3.5 ${wishlist.length > 0 ? 'fill-[#A6865A] text-[#A6865A]' : 'text-[#736B63]'}`} />
-              <span className="hidden sm:inline">Wishlist</span>
-              {wishlist.length > 0 && (
-                <span className="px-1.5 py-0.2 bg-[#A6865A] text-white text-[10px] font-mono rounded-full font-semibold">
+              <Heart
+                className={`w-3.5 h-3.5 transition-transform group-hover:scale-110 ${
+                  wishlist.length > 0
+                    ? 'fill-[#A6865A] text-[#A6865A]'
+                    : 'text-[#736B63] group-hover:text-[#A6865A]'
+                }`}
+              />
+              <span className="hidden sm:inline text-[11px] tracking-[0.16em] uppercase font-medium">Wishlist</span>
+              {wishlist.length > 0 ? (
+                <span className="inline-flex items-center justify-center min-w-[18px] h-[18px] px-1 text-[9px] font-mono font-bold text-white bg-[#191816] group-hover:bg-[#A6865A] rounded-full">
                   {wishlist.length}
+                </span>
+              ) : (
+                <span className="hidden sm:inline-flex items-center justify-center min-w-[16px] h-[16px] text-[9px] font-mono text-[#968E85] bg-[#F4EFEB] rounded-full">
+                  0
                 </span>
               )}
             </button>

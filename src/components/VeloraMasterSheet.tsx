@@ -8,7 +8,6 @@ import React, { useState } from 'react';
 import { Product, ProductVariant } from '../types';
 import {
   FileText,
-  Copy,
   Check,
   Download,
   Share2,
@@ -24,9 +23,7 @@ import {
   Tag,
   Search,
   ExternalLink,
-  Globe,
 } from 'lucide-react';
-import { useStore } from '../context/StoreContext';
 import { MotionFadeIn } from './MotionFadeIn';
 
 interface VeloraMasterSheetProps {
@@ -41,7 +38,6 @@ export const VeloraMasterSheet: React.FC<VeloraMasterSheetProps> = ({
   onConsultantClick,
 }) => {
   const master = product.masterSheet;
-  const { setIsSeoDrawerOpen } = useStore();
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const [dimensionUnit, setDimensionUnit] = useState<'cm' | 'in'>('cm');
   const [activeSectionFilter, setActiveSectionFilter] = useState<string>('all');
@@ -85,39 +81,6 @@ ${product.variants
 *Inquiries & Bespoke Blueprints:* https://houseofform.com`;
   };
 
-  // JSON Structured Data for technical / SEO use
-  const structuredDataJson = JSON.stringify(
-    {
-      '@context': 'https://schema.org',
-      '@type': 'Product',
-      name: product.name,
-      image: [product.images.hero, product.images.front, product.images.threeQuarter],
-      description: master.seo.metaDescription,
-      sku: product.sku,
-      mpn: master.productCode,
-      brand: {
-        '@type': 'Brand',
-        name: 'House Of Form',
-      },
-      offers: {
-        '@type': 'AggregateOffer',
-        priceCurrency: 'INR',
-        lowPrice: Math.min(...product.variants.map((v) => v.basePrice)),
-        highPrice: Math.max(...product.variants.map((v) => v.basePrice)),
-        offerCount: product.variants.length,
-        availability: 'https://schema.org/PreOrder',
-        itemCondition: 'https://schema.org/NewCondition',
-      },
-      material: 'Kiln-Dried Hardwood, Pirelli Webbing, Premium Bouclé / Italian Linen / Velvet',
-      countryOfOrigin: {
-        '@type': 'Country',
-        name: 'India',
-      },
-    },
-    null,
-    2
-  );
-
   return (
     <div className="bg-[#FBF9F5] text-[#191816]">
       {/* Top Action Bar for Technical Dossier */}
@@ -134,16 +97,6 @@ ${product.variants
           </div>
 
           <div className="flex items-center space-x-2">
-            <button
-              onClick={() => setIsSeoDrawerOpen(true)}
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 bg-[#191816] border border-[#C5A880]/50 text-[#FBF9F5] hover:border-[#C5A880] text-[10px] tracking-wider uppercase font-semibold transition-colors cursor-pointer"
-              title="Inspect Live SEO & Tier 1 GEO Strategy"
-            >
-              <Globe className="w-3.5 h-3.5 text-[#C5A880]" />
-              <span className="hidden sm:inline">SEO & Tier 1 GEO</span>
-              <span className="sm:hidden">SEO</span>
-            </button>
-
             <button
               onClick={() => copyToClipboard(getWhatsAppCatalogueText(), 'whatsapp')}
               className="inline-flex items-center space-x-1.5 px-3 py-1.5 bg-[#25D366]/20 border border-[#25D366]/40 text-[#25D366] hover:bg-[#25D366]/30 text-[10px] tracking-wider uppercase font-semibold transition-colors cursor-pointer"
@@ -932,99 +885,6 @@ ${product.variants
                   #{tag}
                 </span>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* 20–23 — SEO ARCHITECTURE & GEO LANDING TARGETS */}
-        <section className="bg-[#23201D] text-[#FBF9F5] p-6 sm:p-8 border border-[#3E3A36] space-y-5">
-          <div className="flex flex-wrap justify-between items-center gap-2">
-            <div className="flex items-center space-x-2">
-              <span className="text-[10px] font-mono text-[#C5A880] uppercase tracking-wider">
-                Section 20–23 · SEO Architecture & Structured Metadata
-              </span>
-              <span className="px-1.5 py-0.5 bg-[#3E3A36] text-[9px] font-mono text-[#E6DFD5] uppercase">
-                {product.name}
-              </span>
-            </div>
-            
-            <div className="flex items-center space-x-3">
-              <button
-                onClick={() => setIsSeoDrawerOpen(true)}
-                className="inline-flex items-center space-x-1.5 text-[10px] text-[#FBF9F5] hover:text-[#C5A880] bg-[#191816] px-2.5 py-1 border border-[#3E3A36] uppercase tracking-wider cursor-pointer transition-colors"
-                title="Open Live SEO & Metadata Suite"
-              >
-                <Globe className="w-3 h-3 text-[#C5A880]" />
-                <span>Inspect Live SERP & Tags</span>
-              </button>
-
-              <button
-                onClick={() => copyToClipboard(structuredDataJson, 'json-ld')}
-                className="inline-flex items-center space-x-1 text-[10px] text-[#C5A880] hover:text-white uppercase tracking-wider cursor-pointer"
-              >
-                {copiedKey === 'json-ld' ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-                <span>{copiedKey === 'json-ld' ? 'JSON-LD Copied' : 'Copy JSON-LD'}</span>
-              </button>
-            </div>
-          </div>
-
-          <div className="space-y-2 text-xs">
-            <p><strong className="text-[#C5A880]">Page Title:</strong> {master.seo.title}</p>
-            <p><strong className="text-[#C5A880]">Alternate Geo Title:</strong> {master.seo.altGeoTitle}</p>
-            <p><strong className="text-[#C5A880]">Meta Description:</strong> {master.seo.metaDescription}</p>
-          </div>
-
-          <div className="pt-3 border-t border-[#3E3A36] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs text-[#D1C7BB]">
-            <div>
-              <strong className="text-white block uppercase tracking-wider text-[10px] mb-1.5">
-                Primary Search Queries:
-              </strong>
-              <div className="flex flex-wrap gap-1">
-                {master.seo.primaryKeywords.map((k, idx) => (
-                  <span key={idx} className="bg-[#191816] px-2 py-0.5 border border-[#3E3A36] text-[10px]">
-                    {k}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <strong className="text-white block uppercase tracking-wider text-[10px] mb-1.5">
-                Secondary Keywords:
-              </strong>
-              <div className="flex flex-wrap gap-1">
-                {(master.seo.secondaryKeywords || []).map((k, idx) => (
-                  <span key={idx} className="bg-[#191816] px-2 py-0.5 border border-[#3E3A36] text-[10px] text-[#D1C7BB]">
-                    {k}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <strong className="text-white block uppercase tracking-wider text-[10px] mb-1.5">
-                Long-Tail Queries:
-              </strong>
-              <div className="flex flex-wrap gap-1">
-                {(master.seo.longTailKeywords || []).map((k, idx) => (
-                  <span key={idx} className="bg-[#191816] px-2 py-0.5 border border-[#3E3A36] text-[10px] text-[#9E9589]">
-                    {k}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <strong className="text-white block uppercase tracking-wider text-[10px] mb-1.5">
-                Geo Landing Opportunities:
-              </strong>
-              <div className="flex flex-wrap gap-1">
-                {master.seo.geoLandingOpportunities.map((g, idx) => (
-                  <span key={idx} className="bg-[#191816] px-2 py-0.5 border border-[#3E3A36] text-[10px] text-[#C5A880]">
-                    {g}
-                  </span>
-                ))}
-              </div>
             </div>
           </div>
         </section>

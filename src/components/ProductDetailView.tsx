@@ -27,7 +27,6 @@ import {
   Eye,
   Sliders,
   Maximize2,
-  Globe,
 } from 'lucide-react';
 import { ConsultationModal } from './ConsultationModal';
 import { MotionFadeIn } from './MotionFadeIn';
@@ -48,7 +47,6 @@ export const ProductDetailView: React.FC = () => {
     toggleWishlist,
     isInWishlist,
     setIsWishlistDrawerOpen,
-    setIsSeoDrawerOpen,
   } = useStore();
 
   const product = products.find((p) => p.id === selectedProductId) || products[0];
@@ -137,17 +135,6 @@ export const ProductDetailView: React.FC = () => {
 
           {/* Master View Switcher: Studio View vs Master Technical Dossier */}
           <div className="flex items-center space-x-2">
-            <button
-              id="pdp-seo-suite-toggle"
-              onClick={() => setIsSeoDrawerOpen(true)}
-              className="flex items-center space-x-1.5 px-3 py-1.5 text-xs tracking-wider uppercase font-semibold transition-all cursor-pointer bg-white text-[#736B63] hover:text-[#191816] border border-[#D1C7BB] hover:border-[#191816]"
-              title="Inspect SEO Titles, Meta Descriptions & Keyword Architecture"
-            >
-              <Globe className="w-3.5 h-3.5 text-[#A6865A]" />
-              <span className="hidden sm:inline">SEO & Discoverability</span>
-              <span className="sm:hidden">SEO</span>
-            </button>
-
             <div className="inline-flex items-center bg-[#F4EFEB] p-1 border border-[#D1C7BB]">
               <button
                 id="pdp-studio-view-toggle"

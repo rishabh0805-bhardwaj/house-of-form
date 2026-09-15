@@ -7,7 +7,7 @@ import { useStore } from '../context/StoreContext';
 import { Shield, Sparkles, MapPin, Phone, Mail, ArrowUpRight } from 'lucide-react';
 
 export const Footer: React.FC = () => {
-  const { setCurrentView, setSelectedProductId, setIsReservationModalOpen, setSelectedCategory, setIsSeoDrawerOpen } = useStore();
+  const { setCurrentView, setSelectedProductId, setIsReservationModalOpen, setSelectedCategory } = useStore();
 
   const navigateTo = (view: string, productId?: string) => {
     if (productId) setSelectedProductId(productId);
@@ -153,15 +153,6 @@ export const Footer: React.FC = () => {
                   className="hover:text-[#FBF9F5] transition-colors cursor-pointer"
                 >
                   For Trade & Architects
-                </button>
-              </li>
-              <li>
-                <button
-                  id="footer-seo-suite-btn"
-                  onClick={() => setIsSeoDrawerOpen(true)}
-                  className="hover:text-[#FBF9F5] transition-colors cursor-pointer text-[#C5A880] flex items-center space-x-1"
-                >
-                  <span>SEO & Metadata Suite</span>
                 </button>
               </li>
             </ul>

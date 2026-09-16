@@ -127,8 +127,12 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrolled = window.scrollY > 55;
-      setIsScrolled((prev) => (prev !== scrolled ? scrolled : prev));
+      const y = window.scrollY;
+      setIsScrolled((prev) => {
+        if (!prev && y > 85) return true;
+        if (prev && y < 45) return false;
+        return prev;
+      });
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });

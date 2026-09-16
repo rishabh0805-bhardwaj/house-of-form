@@ -76,43 +76,56 @@ export const Header: React.FC = () => {
   return (
     <div className="w-full relative">
       
-      {/* 1 & 2. TOP ANNOUNCEMENT BANNER, BIG BRAND NAME STRIP & PRIMARY NAVIGATION (Smoothly hides on scroll) */}
+      {/* 1. BIG BRAND NAME STRIP — ONLY the brand name, architectural, serene & iconic */}
+      <div className="w-full bg-[#FBF9F5] border-b border-[#E6DFD5] py-8 sm:py-10 md:py-12 px-4 flex items-center justify-center">
+        <button
+          id="brand-hero-strip-btn"
+          onClick={() => navigateTo('home')}
+          className="text-center group cursor-pointer flex flex-col items-center max-w-full focus:outline-none"
+        >
+          <motion.h1
+            initial={!hasAnimated ? { opacity: 0, y: 20, filter: 'blur(3px)' } : false}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{
+              duration: 0.9,
+              ease: [0.16, 1, 0.3, 1],
+              delay: 0.05,
+            }}
+            className="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-[0.18em] sm:tracking-[0.24em] font-light text-[#191816] group-hover:text-[#A6865A] transition-colors uppercase select-none leading-none"
+          >
+            HOUSE OF FORM
+          </motion.h1>
+        </button>
+      </div>
+
+      {/* 2 & 3. STICKY DUAL NAVIGATION CONTAINER (Sticky at top with smooth scroll transition) */}
       <div
-        id="primary-brand-header-wrapper"
-        className={`transition-all duration-300 ease-in-out overflow-hidden ${
+        id="sticky-header-container"
+        className={`sticky top-0 z-40 bg-[#FBF9F5]/98 backdrop-blur-md transition-shadow duration-500 ${
           isScrolled
-            ? 'max-h-0 opacity-0 -translate-y-2 pointer-events-none'
-            : 'max-h-[600px] opacity-100 translate-y-0'
+            ? 'shadow-[0_8px_30px_rgba(25,24,22,0.08)]'
+            : 'shadow-none'
         }`}
       >
-        {/* FULL-WIDTH BRAND NAME STRIP — ONLY the brand name, architectural, serene & iconic */}
-        <div className="w-full bg-[#FBF9F5] border-b border-[#E6DFD5] py-8 sm:py-10 md:py-12 px-4 flex items-center justify-center">
-          <button
-            id="brand-hero-strip-btn"
-            onClick={() => navigateTo('home')}
-            className="text-center group cursor-pointer flex flex-col items-center max-w-full focus:outline-none"
-          >
-            <motion.h1
-              initial={!hasAnimated ? { opacity: 0, y: 20, filter: 'blur(3px)' } : false}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              transition={{
-                duration: 0.9,
-                ease: [0.16, 1, 0.3, 1],
-                delay: 0.05,
-              }}
-              className="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-[0.18em] sm:tracking-[0.24em] font-light text-[#191816] group-hover:text-[#A6865A] transition-colors uppercase select-none leading-none"
-            >
-              HOUSE OF FORM
-            </motion.h1>
-          </button>
-        </div>
-
-        {/* PRIMARY BRAND NAVIGATION BAR */}
-        <header className="bg-[#FBF9F5] border-b border-[#E6DFD5]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+        {/* HEADER 1: PRIMARY BRAND NAVIGATION (Smoothly slides up & fades out when scrolled down) */}
+        <motion.div
+          id="primary-brand-header-motion"
+          initial={false}
+          animate={{
+            height: isScrolled ? 0 : 'auto',
+            opacity: isScrolled ? 0 : 1,
+            y: isScrolled ? -8 : 0,
+          }}
+          transition={{
+            duration: 0.42,
+            ease: [0.16, 1, 0.3, 1],
+          }}
+          className="overflow-hidden border-b border-[#E6DFD5]/70 bg-[#FBF9F5]"
+        >
+          <header className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
             
             {/* Desktop Left Brand Accent / Atelier Stamp */}
-            <div className="hidden xl:flex items-center text-[10px] tracking-[0.25em] uppercase text-[#8C8379] font-medium w-44 shrink-0">
+            <div className="hidden xl:flex items-center text-[10px] tracking-[0.25em] uppercase text-[#8C8379] font-medium w-48 shrink-0">
               <span className="w-1.5 h-1.5 rounded-full bg-[#A6865A] mr-2 shrink-0" />
               <span>Bespoke Atelier</span>
             </div>
@@ -190,181 +203,158 @@ export const Header: React.FC = () => {
               </button>
             </nav>
 
-            {/* Desktop Right: Elevated, "More Better" Wishlist Button (Zero overlap!) */}
-            <div className="hidden xl:flex items-center justify-end w-44 shrink-0">
+            {/* Desktop Right: Bespoke Concierge (Single Wishlist button is kept exclusively in Header 2 below) */}
+            <div className="hidden xl:flex items-center justify-end w-48 shrink-0">
               <button
-                id="header-wishlist-btn"
+                onClick={() => navigateTo('bespoke')}
+                className="inline-flex items-center space-x-1.5 text-[10.5px] tracking-[0.22em] uppercase font-medium text-[#736B63] hover:text-[#191816] transition-colors cursor-pointer group"
+              >
+                <span>Bespoke Concierge</span>
+                <ArrowRight className="w-3.5 h-3.5 text-[#A6865A] transform group-hover:translate-x-0.5 transition-transform" />
+              </button>
+            </div>
+
+            {/* Mobile Header 1 bar */}
+            <div className="xl:hidden flex items-center justify-between w-full">
+              <span className="text-[10px] tracking-[0.24em] uppercase text-[#8C8379] font-medium">
+                House Of Form Atelier
+              </span>
+              <button
+                onClick={() => navigateTo('bespoke')}
+                className="text-[10px] tracking-[0.18em] uppercase text-[#A6865A] font-medium hover:text-[#191816]"
+              >
+                Bespoke Concierge →
+              </button>
+            </div>
+
+          </header>
+        </motion.div>
+
+        {/* HEADER 2: FURNITURE CATEGORIES & SINGLE FANCY WISHLIST BUTTON (Remains fixed at top with smooth transitions) */}
+        <nav
+          id="furniture-categories-header"
+          className={`border-b border-[#E6DFD5] transition-all duration-300 ${
+            isScrolled ? 'py-2 sm:py-2.5' : 'py-2.5 sm:py-3.5'
+          }`}
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+            
+            {/* Compact brand logo revealed smoothly when primary header is scrolled */}
+            <motion.div
+              initial={false}
+              animate={{
+                width: isScrolled ? 'auto' : 0,
+                opacity: isScrolled ? 1 : 0,
+                x: isScrolled ? 0 : -14,
+              }}
+              transition={{
+                duration: 0.38,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="overflow-hidden flex items-center shrink-0"
+            >
+              <button
+                onClick={() => {
+                  navigateTo('home');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="flex flex-col text-left group cursor-pointer whitespace-nowrap pr-4 sm:pr-6 border-r border-[#E6DFD5]"
+              >
+                <span className="font-serif text-base tracking-[0.16em] uppercase text-[#191816] group-hover:text-[#A6865A] transition-colors leading-none">
+                  HOUSE OF FORM
+                </span>
+                <span className="text-[7.5px] tracking-[0.25em] uppercase text-[#736B63] font-medium mt-0.5">
+                  Bespoke Atelier
+                </span>
+              </button>
+            </motion.div>
+
+            {/* Furniture Category Links (All Pieces, Sofas, Chairs, Tables, Beds, Storage) */}
+            <div className="flex-1 flex items-center justify-start md:justify-center overflow-x-auto no-scrollbar space-x-1 sm:space-x-2 md:space-x-3 text-[11px] sm:text-[12px] tracking-[0.18em] uppercase font-medium">
+              {FURNITURE_CATEGORIES.map((category) => {
+                const isActive =
+                  (currentView === 'category-view' || currentView === 'collection') &&
+                  selectedCategory === category.id;
+
+                return (
+                  <button
+                    key={category.id}
+                    id={`cat-nav-${category.id.toLowerCase()}`}
+                    onClick={() => handleCategorySelect(category.id)}
+                    className={`relative px-3 sm:px-4 py-1.5 transition-all whitespace-nowrap cursor-pointer ${
+                      isActive
+                        ? 'text-[#191816] font-semibold'
+                        : 'text-[#736B63] hover:text-[#191816]'
+                    }`}
+                  >
+                    <span>{category.label}</span>
+                    {isActive && (
+                      <span className="absolute bottom-0 left-2 right-2 h-[2px] bg-[#A6865A] rounded-full transition-all" />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Right side action: The SINGLE, EXTREMELY FANCY WISHLIST BUTTON + Mobile Menu Toggle */}
+            <div className="flex items-center space-x-2.5 sm:space-x-3 pl-2 sm:pl-4 shrink-0">
+              <motion.button
+                id="main-fancy-wishlist-btn"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.96 }}
                 onClick={() => setIsWishlistDrawerOpen(true)}
-                className={`group relative inline-flex items-center space-x-2.5 px-4 py-2 rounded-full border transition-all duration-200 cursor-pointer shadow-xs ${
+                className={`group relative inline-flex items-center gap-2 sm:gap-2.5 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full cursor-pointer transition-all duration-300 border select-none ${
                   wishlist.length > 0
-                    ? 'bg-white border-[#A6865A] text-[#191816] hover:bg-[#F4EFEB]'
-                    : 'bg-white/90 border-[#D1C7BB] text-[#4A453F] hover:border-[#A6865A] hover:text-[#191816] hover:bg-white'
+                    ? 'bg-[#FDFBF7] border-[#C5A880] text-[#191816] hover:border-[#967246] hover:bg-white shadow-[0_2px_12px_rgba(197,168,128,0.2)] hover:shadow-[0_4px_18px_rgba(197,168,128,0.3)]'
+                    : 'bg-white/90 border-[#D1C7BB] text-[#4A453F] hover:border-[#C5A880] hover:text-[#191816] hover:bg-white shadow-xs hover:shadow-[0_2px_10px_rgba(25,24,22,0.06)]'
                 }`}
                 title={wishlist.length > 0 ? `Curated Wishlist (${wishlist.length} pieces)` : 'Curated Wishlist'}
               >
-                <Heart
-                  className={`w-3.5 h-3.5 transition-transform group-hover:scale-110 ${
-                    wishlist.length > 0
-                      ? 'fill-[#A6865A] text-[#A6865A]'
-                      : 'text-[#736B63] group-hover:text-[#A6865A]'
-                  }`}
-                />
-                <span className="text-[11px] tracking-[0.18em] uppercase font-medium">
+                {/* Fancy jewel heart icon with active beacon */}
+                <span className="relative flex items-center justify-center">
+                  <Heart
+                    className={`w-3.5 h-3.5 transition-all duration-300 ${
+                      wishlist.length > 0
+                        ? 'fill-[#A6865A] text-[#A6865A] scale-105'
+                        : 'text-[#8C8379] group-hover:text-[#A6865A] group-hover:scale-110'
+                    }`}
+                  />
+                  {wishlist.length > 0 && (
+                    <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-[#C5A880] animate-ping opacity-75 pointer-events-none" />
+                  )}
+                </span>
+
+                {/* Editorial typography */}
+                <span className="text-[10px] sm:text-[11px] tracking-[0.2em] uppercase font-medium">
                   Wishlist
                 </span>
+
+                {/* Horology-inspired luxury counter badge (01, 02, etc.) */}
                 {wishlist.length > 0 ? (
-                  <span className="inline-flex items-center justify-center min-w-[20px] h-[20px] px-1.5 text-[10px] font-mono font-bold text-white bg-[#191816] group-hover:bg-[#A6865A] rounded-full transition-colors">
-                    {wishlist.length}
+                  <span className="inline-flex items-center justify-center min-w-[22px] h-[20px] px-1.5 text-[9.5px] font-mono font-bold tracking-wider text-[#FBF9F5] bg-[#191816] group-hover:bg-[#A6865A] border border-[#C5A880]/40 rounded-full transition-all duration-300 shadow-xs">
+                    {wishlist.length < 10 ? `0${wishlist.length}` : wishlist.length}
                   </span>
                 ) : (
-                  <span className="inline-flex items-center justify-center min-w-[18px] h-[18px] text-[9px] font-mono text-[#968E85] bg-[#F4EFEB] rounded-full">
+                  <span className="inline-flex items-center justify-center w-[18px] h-[18px] text-[9px] font-mono text-[#968E85] bg-[#F4EFEB] rounded-full group-hover:text-[#191816] transition-colors">
                     0
                   </span>
                 )}
-              </button>
-            </div>
+              </motion.button>
 
-            {/* Mobile Controls */}
-            <div className="xl:hidden flex items-center justify-between w-full">
+              {/* Mobile menu toggle button */}
               <button
-                onClick={() => {
-                  setSelectedCategory('ALL');
-                  navigateTo('category-view');
-                }}
-                className="text-[11px] tracking-[0.2em] uppercase text-[#736B63] font-medium hover:text-[#191816]"
+                id="mobile-menu-toggle"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="xl:hidden p-1.5 text-[#191816] hover:text-[#A6865A] cursor-pointer"
+                aria-label="Toggle Navigation Menu"
               >
-                Explore Catalogue
+                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
-              <div className="flex items-center space-x-3">
-                <button
-                  id="mobile-header-wishlist-btn"
-                  onClick={() => setIsWishlistDrawerOpen(true)}
-                  className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full border border-[#D1C7BB] bg-white text-[#191816] text-[11px] tracking-wider uppercase font-medium hover:border-[#A6865A] cursor-pointer shadow-xs"
-                  aria-label="View Wishlist"
-                >
-                  <Heart
-                    className={`w-4 h-4 ${
-                      wishlist.length > 0 ? 'fill-[#A6865A] text-[#A6865A]' : 'text-[#736B63]'
-                    }`}
-                  />
-                  <span className="text-[10px] tracking-wider uppercase font-medium">Wishlist</span>
-                  {wishlist.length > 0 && (
-                    <span className="w-4 h-4 rounded-full bg-[#191816] text-white text-[9px] flex items-center justify-center font-mono font-bold">
-                      {wishlist.length}
-                    </span>
-                  )}
-                </button>
-                <button
-                  id="mobile-menu-toggle"
-                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="p-2 text-[#191816] hover:text-[#A6865A] cursor-pointer"
-                  aria-label="Toggle Navigation Menu"
-                >
-                  {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-                </button>
-              </div>
             </div>
 
           </div>
-        </header>
+        </nav>
       </div>
-
-      {/* 3. NEW SECONDARY STICKY NAVIGATION BAR: FURNITURE CATEGORIES
-          Remains fixed at the top (sticky top-0 z-40) when primary header hides on scroll */}
-      <nav
-        id="furniture-categories-header"
-        className={`sticky top-0 z-40 bg-[#FBF9F5]/98 backdrop-blur-md border-b border-[#E6DFD5] transition-all duration-300 ${
-          isScrolled
-            ? 'shadow-[0_4px_20px_-8px_rgba(25,24,22,0.12)] py-2 sm:py-2.5'
-            : 'py-2.5 sm:py-3.5'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          
-          {/* Compact brand logo revealed smoothly when primary header is hidden */}
-          <div
-            className={`transition-all duration-300 overflow-hidden flex items-center ${
-              isScrolled
-                ? 'opacity-100 max-w-[170px] mr-4 sm:mr-8'
-                : 'opacity-0 max-w-0 pointer-events-none mr-0'
-            }`}
-          >
-            <button
-              onClick={() => {
-                navigateTo('home');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              className="flex flex-col text-left group cursor-pointer whitespace-nowrap"
-            >
-              <span className="font-serif text-base tracking-[0.16em] uppercase text-[#191816] group-hover:text-[#A6865A] transition-colors leading-none">
-                HOUSE OF FORM
-              </span>
-              <span className="text-[7.5px] tracking-[0.25em] uppercase text-[#736B63] font-medium mt-0.5">
-                Bespoke Atelier
-              </span>
-            </button>
-          </div>
-
-          {/* Furniture Category Links (All Pieces, Sofas, Chairs, Tables, Beds, Storage) */}
-          <div className="flex-1 flex items-center justify-start md:justify-center overflow-x-auto no-scrollbar space-x-1 sm:space-x-2 md:space-x-3 text-[11px] sm:text-[12px] tracking-[0.18em] uppercase font-medium">
-            {FURNITURE_CATEGORIES.map((category) => {
-              const isActive =
-                (currentView === 'category-view' || currentView === 'collection') &&
-                selectedCategory === category.id;
-
-              return (
-                <button
-                  key={category.id}
-                  id={`cat-nav-${category.id.toLowerCase()}`}
-                  onClick={() => handleCategorySelect(category.id)}
-                  className={`relative px-3 sm:px-4 py-1.5 transition-all whitespace-nowrap cursor-pointer ${
-                    isActive
-                      ? 'text-[#191816] font-semibold'
-                      : 'text-[#736B63] hover:text-[#191816]'
-                  }`}
-                >
-                  <span>{category.label}</span>
-                  {isActive && (
-                    <span className="absolute bottom-0 left-2 right-2 h-[2px] bg-[#A6865A] rounded-full transition-all" />
-                  )}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Right side actions: Enhanced Wishlist curation trigger */}
-          <div className="flex items-center space-x-3 pl-3 sm:pl-4 shrink-0">
-            <button
-              onClick={() => setIsWishlistDrawerOpen(true)}
-              className={`group inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full border transition-all duration-200 cursor-pointer shadow-xs ${
-                wishlist.length > 0
-                  ? 'bg-white border-[#A6865A] text-[#191816] hover:bg-[#F4EFEB]'
-                  : 'bg-white/95 border-[#D1C7BB] text-[#4A453F] hover:border-[#A6865A] hover:text-[#191816]'
-              }`}
-              title={wishlist.length > 0 ? `Curated Wishlist (${wishlist.length} pieces)` : 'Curated Wishlist'}
-            >
-              <Heart
-                className={`w-3.5 h-3.5 transition-transform group-hover:scale-110 ${
-                  wishlist.length > 0
-                    ? 'fill-[#A6865A] text-[#A6865A]'
-                    : 'text-[#736B63] group-hover:text-[#A6865A]'
-                }`}
-              />
-              <span className="hidden sm:inline text-[11px] tracking-[0.16em] uppercase font-medium">Wishlist</span>
-              {wishlist.length > 0 ? (
-                <span className="inline-flex items-center justify-center min-w-[18px] h-[18px] px-1 text-[9px] font-mono font-bold text-white bg-[#191816] group-hover:bg-[#A6865A] rounded-full">
-                  {wishlist.length}
-                </span>
-              ) : (
-                <span className="hidden sm:inline-flex items-center justify-center min-w-[16px] h-[16px] text-[9px] font-mono text-[#968E85] bg-[#F4EFEB] rounded-full">
-                  0
-                </span>
-              )}
-            </button>
-          </div>
-
-        </div>
-      </nav>
 
       {/* 4. MOBILE NAVIGATION DRAWER */}
       {isMobileMenuOpen && (

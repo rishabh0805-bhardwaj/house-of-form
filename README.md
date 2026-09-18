@@ -1,158 +1,191 @@
-# House Of Form (HOF)
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<!--                        HOUSE OF FORM — README.md                            -->
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
 
-> **Bespoke Contemporary Furniture House • Milan & New Delhi**  
-> European design intelligence synthesized with master Indian artisanal joinery.
+<div align="center">
 
----
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:A6865A,45:736B63,100:191816&height=230&section=header&text=HOUSE%20OF%20FORM&fontSize=54&fontColor=FBF9F5&fontAlignY=36&desc=Bespoke%20Contemporary%20Furniture%20House%20%E2%80%A2%20Milan%20%26%20New%20Delhi&descAlignY=56&descSize=16&animation=fadeIn&fontFamily=Georgia" width="100%" alt="House Of Form Banner"/>
+
+<br/>
+
+### 🏛️ *European design intelligence, synthesized with master Indian artisanal joinery.*
+
+**Architectural permanence · Refined materiality · Millimetre-precise customization**
+
+<br/>
+
+[![Status](https://img.shields.io/badge/STATUS-IN%20ATELIER-A6865A?style=for-the-badge&labelColor=191816)](#)
+[![License](https://img.shields.io/badge/LICENSE-PRIVATE%20%26%20CONFIDENTIAL-736B63?style=for-the-badge&labelColor=191816)](#-license)
+[![Made In](https://img.shields.io/badge/CRAFTED%20IN-INDIA%20%F0%9F%87%AE%F0%9F%87%B3-A6865A?style=for-the-badge&labelColor=191816)](#)
+[![PRs](https://img.shields.io/badge/PRs-WELCOME-736B63?style=for-the-badge&labelColor=191816)](#)
+
+<br/>
+
+<a href="#-overview">Overview</a> &nbsp;•&nbsp;
+<a href="#-key-features">Features</a> &nbsp;•&nbsp;
+<a href="#-technology-stack">Stack</a> &nbsp;•&nbsp;
+<a href="#-project-structure">Structure</a> &nbsp;•&nbsp;
+<a href="#-getting-started">Setup</a> &nbsp;•&nbsp;
+<a href="#-design-system--palette">Palette</a>
+
+</div>
+
+<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" width="100%" height="3px" alt="divider"/>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
 
 ## 🏛️ Overview
 
-**House Of Form** is a luxury digital storefront and bespoke atelier experience for made-to-order contemporary furniture. Built around the ethos of architectural permanence, refined materiality, and millimeter-precise customization, the application provides an immersive, high-touch consultation and reservation journey.
+> **House Of Form (HOF)** is a luxury digital storefront and bespoke atelier experience for *made-to-order contemporary furniture*.
+>
+> Built around the ethos of **architectural permanence**, **refined materiality**, and **millimetre-precise customization**, the application delivers an immersive, high-touch consultation and reservation journey — from first glance to white-glove installation.
 
----
+<div align="center">
+
+| 🪑 **Atelier** | 🎨 **Materiality** | 📐 **Precision** | 🚚 **Delivery** |
+|:---:|:---:|:---:|:---:|
+| Made-to-order | Kiln-seasoned hardwoods | Millimetre bespoke | White-glove, 6-stage |
+| Milan × New Delhi | PVD brass & bouclé | CAD elevation diagrams | Staircase tested |
+
+</div>
+
+<br/>
+
+<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:FBF9F5,50:F5F2EB,100:FBF9F5&height=4&section=header" width="100%"/>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
 
 ## ✨ Key Features
 
-### 1. Editorial Brand Masthead with One-Time Entrance Animation
-- **Hero Move-In Effect**: On first arrival or login per session, the commanding grand masthead glides upward with cubic-bezier easing (`[0.16, 1, 0.3, 1]`) and optical blur resolution.
-- **Session Intelligence**: The entrance animation is recorded via `sessionStorage` (`hof_brand_animated`), ensuring an impactful first impression while maintaining friction-free subsequent navigation.
-- **Two-Tier Header Architecture**: Features a scroll-reactive primary header strip and a pinned sticky category navigation bar.
+<div align="center">
 
-### 2. The Velora — Flagship Product Master Sheet & Technical Dossier
-- **Exclusive Flagship Catalogue**: Centered on **Product 01 — The Velora** (`HOF-SF-VLR-001`), an Italian-inspired curved lounge sofa synthesized with bespoke Indian craftsmanship.
-- **Architectural Studio vs. Master Dossier Modes**: Toggle between an interactive studio view (360° perspective viewpoints, configuration swatches, CAD elevation diagrams) and the comprehensive **Master Technical Dossier**.
-- **Comprehensive Master Dossier**: 28-section technical and editorial dossier covering:
-  - **The Design Philosophy**: Core principles (Reduce unnecessary, refine proportion, amplify comfort).
-  - **Ergonomic Proportions & Comfort**: 66cm deep seat, 42-45cm seat height, multi-density high-resilience foam core with feather-down envelope.
-  - **4 Configurations Schedule**: Uno (1 Seater), Due (2 Seater), Tre (3 Seater Flagship), and Grande (4 Seater) with live metric (cm) and imperial (inches) conversions.
-  - **Bespoke Customization**: Custom millimeter dimensions, COM (Customer's Own Material), and plinth finish adaptations.
-  - **Material & Frame Construction**: Kiln-dried Indian Sal & European Birch hardwood frame, Pirelli elastic webbing, and Martindale 45,000+ upholstery.
-  - **Delivery & White-Glove Installation**: 6-stage staircase-tested delivery workflow across Pan-India metro centers.
-  - **WhatsApp Catalogue Generator**: Instant one-click formatted sales copy for client advisors and interior designers.
-  - **JSON-LD Schema Markup**: Full schema.org Product structured data preview for search engines.
+| | Feature | Highlights |
+|:---:|:---|:---|
+| 🎬 | **Editorial Brand Masthead** | One-time entrance animation · Session intelligence |
+| 🛋️ | **The Velora Flagship** | Master technical dossier · 28 sections |
+| 📝 | **Bespoke Reservation Flow** | Piece reservation · Swatch kit · Consultation |
+| 🧵 | **Digital Material Atelier** | Interactive tour guide · Hot-spot micro-details |
+| 💛 | **Curated Wishlist** | Slide-out drawer · Spatial planning |
+| 🌊 | **Scroll-Triggered Motion** | `motion/react` fade-ins across all views |
+| 🗂️ | **Concierge Admin Suite** | Bookings · Material requests · Order status |
 
-### 3. Bespoke Made-to-Order Reservation Flow
-- **Piece Reservation**: Secure reservation fee with 100% credit applied toward the final bespoke fabrication.
-- **Contextual Swatch Kit Reassurance**: Complimentary tactile material swatch box delivered to client doorsteps within 48 hours to confirm textures, grains, and finishes before workshop crafting begins.
-- **Architectural Consultation**: Direct appointment scheduler with dedicated spatial consultants and interior architects.
+</div>
 
-### 4. Digital Material Atelier & Interactive Virtual Tour Guide
-- **Interactive Tour Guide**: Architectural workbench walkthrough featuring clickable hot-spots that reveal micro-details, macro-texture zoom inspection, and technical specifications for:
-  - Solid Wood Grain & Kiln-Seasoned Joinery (Canaletto Walnut & Burma Teak)
-  - Loom Textiles & Como Heavy Bouclé (Martindale 45,000+ endurance)
-  - Architectural Metal Finishes (High-vacuum PVD brushed brass & patinated bronze)
-  - Full-Grain Italian Leathers (Semi-aniline Vicenza hides)
-  - Monolithic Natural Stones (Roman Silver Travertine & Honed Calcite)
-- **Atelier Kit Reservation**: Physical magnetic presentation box delivered within 48 hours for tactile confirmation.
+<br/>
 
-### 5. Curated Wishlist & Spatial Planning
-- **Wishlist State**: Local client curation allowing users to save and track pieces from product cards or the product detail view.
-- **Wishlist Drawer**: Interactive slide-out drawer displaying curated pieces, dimensional specs, starting prices, and direct links to bespoke consultation or atelier swatch reservation.
+### 1️⃣ &nbsp;🎬 Editorial Brand Masthead — One-Time Entrance Animation
 
-### 6. Scroll-Triggered Fluid Motion
-- **Motion Fade-In**: Subtle, architectural scroll-triggered entrance animations powered by `motion/react` across all view components (`HomeView`, `ProductDetailView`, `CategoryView`, `CollectionView`, `CraftedInIndiaView`, `MaterialAtelierPage`), enhancing the digital showroom's premium aesthetic.
+> A commanding first impression that never repeats itself — gracefully.
 
-### 7. Concierge & Client Admin Suite
-- Comprehensive concierge desk to review bespoke consultation bookings, material requests, order statuses, and custom dimension specifications.
+- **Hero Move-In Effect** — On first arrival or login per session, the grand masthead glides upward with cubic-bezier easing `[0.16, 1, 0.3, 1]` and optical blur resolution.
+- **Session Intelligence** — The entrance animation is recorded via `sessionStorage` (`hof_brand_animated`), ensuring an impactful first impression while maintaining friction-free subsequent navigation.
+- **Two-Tier Header Architecture** — A scroll-reactive primary header strip layered above a pinned sticky category navigation bar.
 
----
+<br/>
 
-## 🛠️ Technology Stack
+### 2️⃣ &nbsp;🛋️ The Velora — Flagship Product Master Sheet & Technical Dossier
 
-- **Framework**: [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
-- **Build Tool**: [Vite](https://vitejs.dev/)
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
-- **Animation**: [Motion](https://motion.dev/) (`motion/react`)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **State Management**: Centralized Store Context with session persistence
+> **Product 01 — The Velora** &nbsp;·&nbsp; `HOF-SF-VLR-001`
+> *An Italian-inspired curved lounge sofa, synthesized with bespoke Indian craftsmanship.*
 
----
+**Exclusive Flagship Catalogue** centred on a single, obsessively documented hero piece.
 
-## 📁 Project Structure
+<table>
+<tr>
+<td width="50%" valign="top">
 
-```
-├── index.html                  # HTML entry point with luxury typography & meta tags
-├── metadata.json               # Application metadata and capability declarations
-├── package.json                # Project dependencies and npm scripts
-├── vite.config.ts              # Vite + Tailwind CSS plugins
-├── src/
-│   ├── main.tsx                # Application bootstrapping
-│   ├── App.tsx                 # Root layout and view routing
-│   ├── index.css               # Global Tailwind CSS directives & typography imports
-│   ├── types.ts                # TypeScript domain models (Products, Swatches, Consultations)
-│   ├── context/
-│   │   └── StoreContext.tsx    # State management for cart, reservations, and active views
-│   ├── data/
-│   │   └── products.ts         # Handcrafted catalog data, finishes, and dimensional specs
-│   └── components/
-│       ├── Header.tsx          # Grand animated masthead + sticky category bar
-│       ├── HomeView.tsx        # Hero architectural showcase, curation highlights
-│       ├── CategoryView.tsx    # Dedicated category grid with filter controls
-│       ├── CollectionView.tsx  # Full atelier collection catalog
-│       ├── ProductDetailView.tsx # Custom dimensions, finish selector, reservation drawer
-│       ├── MaterialAtelierPage.tsx # Digital materiality showcase & swatches
-│       ├── CraftedInIndiaView.tsx  # Story of heritage joinery & artisan workshop
-│       ├── ConsultationModal.tsx   # Bespoke design consultation scheduling dialog
-│       ├── AdminCRMSuite.tsx       # Private CRM console for orders & client bookings
-│       └── Footer.tsx          # Brand footer with provenance, policies, & showroom locations
-└── README.md                   # Project documentation
-```
+**🏗️ Architectural Studio Mode**
+- 360° perspective viewpoints
+- Configuration swatches
+- CAD elevation diagrams
 
----
+</td>
+<td width="50%" valign="top">
 
-## 🚀 Getting Started
+**📚 Master Dossier Mode**
+- 28-section technical & editorial record
+- Schema.org structured data preview
+- WhatsApp catalogue generator
 
-### Prerequisites
+</td>
+</tr>
+</table>
 
-- **Node.js**: v18.0.0 or higher
-- **npm**: v9.0.0 or higher
+**📖 Comprehensive Master Dossier — 28 Sections**
 
-### Installation
+| Section | Detail |
+|:---|:---|
+| 🧠 **The Design Philosophy** | Reduce unnecessary · Refine proportion · Amplify comfort |
+| 📏 **Ergonomic Proportions** | 66 cm deep seat · 42–45 cm seat height · Multi-density HR foam core with feather-down envelope |
+| 🪑 **4 Configurations Schedule** | *Uno* (1-Seater) · *Due* (2-Seater) · *Tre* (3-Seater Flagship) · *Grande* (4-Seater) — with live metric (cm) ⇄ imperial (in) conversions |
+| 🎛️ **Bespoke Customization** | Custom millimetre dimensions · COM (Customer's Own Material) · Plinth finish adaptations |
+| 🪵 **Material & Frame Construction** | Kiln-dried Indian Sal & European Birch hardwood frame · Pirelli elastic webbing · Martindale 45,000+ upholstery |
+| 🚚 **Delivery & Installation** | 6-stage staircase-tested delivery workflow across Pan-India metro centres |
+| 💬 **WhatsApp Catalogue Generator** | Instant one-click formatted sales copy for client advisors & interior designers |
+| 🔍 **JSON-LD Schema Markup** | Full `schema.org` Product structured data preview for search engines |
 
-1. Clone or extract the project repository.
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+<br/>
 
-### Development Server
+### 3️⃣ &nbsp;📝 Bespoke Made-to-Order Reservation Flow
 
-Start the local Vite development server:
-```bash
-npm run dev
-```
-The application will be accessible at `http://localhost:3000`.
+<table>
+<tr>
+<td align="center" width="33%">
 
-### Production Build
+#### 🖋️ Piece Reservation
+Secure reservation fee with **100% credit** applied toward the final bespoke fabrication.
 
-Compile the application for production:
-```bash
-npm run build
-```
-Production assets are generated in the `dist/` directory.
+</td>
+<td align="center" width="33%">
 
-### Linting & Verification
+#### 🎁 Swatch Kit Reassurance
+Complimentary tactile material swatch box delivered within **48 hours** — confirm textures, grains & finishes before workshop crafting begins.
 
-Verify TypeScript compilation and type safety:
-```bash
-npm run lint
-```
+</td>
+<td align="center" width="33%">
 
----
+#### 🏛️ Architectural Consultation
+Direct appointment scheduler with dedicated **spatial consultants** and **interior architects**.
 
-## 🎨 Design System & Palette
+</td>
+</tr>
+</table>
 
-| Token | Hex Value | Application |
-| :--- | :--- | :--- |
-| **Canvas Light** | `#FBF9F5` | Primary warm editorial background |
-| **Parchment Surface** | `#F5F2EB` | Container card surfaces & subtle elevations |
-| **Border Neutral** | `#E6DFD5` | Architectural hairline framing |
-| **Muted Ochre / Brass** | `#A6865A` | Brand accent, subtle icons, active indicators |
-| **Obsidian Charcoal** | `#191816` | High-contrast display typography |
-| **Warm Mineral Gray** | `#736B63` | Subtitles, metadata, dimension specs |
+<br/>
 
----
+### 4️⃣ &nbsp;🧵 Digital Material Atelier & Interactive Virtual Tour Guide
 
-## 📄 License
+> An architectural workbench walkthrough featuring clickable hot-spots that reveal **micro-details**, **macro-texture zoom inspection**, and **technical specifications**.
 
-Private & Confidential. All rights reserved by House Of Form.
+<div align="center">
+
+| Material | Composition | Endurance |
+|:---|:---|:---|
+| 🪵 **Solid Wood Grain** | Canaletto Walnut & Burma Teak | Kiln-seasoned joinery |
+| 🧶 **Loom Textiles** | Como Heavy Bouclé | Martindale **45,000+** |
+| ⚙️ **Architectural Metal** | High-vacuum PVD brushed brass & patinated bronze | Corrosion resistant |
+| 🐄 **Full-Grain Italian Leather** | Semi-aniline Vicenza hides | Full-grain |
+| 🪨 **Monolithic Natural Stone** | Roman Silver Travertine & Honed Calcite | Sealed & honed |
+
+</div>
+
+> **📦 Atelier Kit Reservation** — A physical magnetic presentation box delivered within **48 hours** for tactile confirmation.
+
+<br/>
+
+### 5️⃣ &nbsp;💛 Curated Wishlist & Spatial Planning
+
+- **Wishlist State** — Local client curation allowing users to save and track pieces from product cards or the product detail view.
+- **Wishlist Drawer** — Interactive slide-out drawer displaying curated pieces, dimensional specs, starting prices, and direct links to bespoke consultation or atelier swatch reservation.
+
+<br/>
+
+### 6️⃣ &nbsp;🌊 Scroll-Triggered Fluid Motion
+
+> Subtle, architectural scroll-triggered entrance animations powered by `motion/react` across all view components — enhancing the digital showroom's premium aesthetic.
+
+```text
+HomeView  ·  ProductDetailView  ·  CategoryView
+CollectionView  ·  CraftedInIndiaView  ·  MaterialAtelierPage

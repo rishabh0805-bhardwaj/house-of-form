@@ -4,7 +4,7 @@
 
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:A6865A,45:736B63,100:191816&height=230&section=header&text=HOUSE%20OF%20FORM&fontSize=54&fontColor=FBF9F5&fontAlignY=36&desc=Bespoke%20Contemporary%20Furniture%20House%20%E2%80%A2%20Milan%20%26%20New%20Delhi&descAlignY=56&descSize=16&animation=fadeIn&fontFamily=Georgia" width="100%" alt="House Of Form Banner"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&amp;color=0:A6865A,45:736B63,100:191816&amp;height=230&amp;section=header&amp;text=HOUSE%20OF%20FORM&amp;fontSize=54&amp;fontColor=FBF9F5&amp;fontAlignY=36&amp;desc=Bespoke%20Contemporary%20Furniture%20House%20%E2%80%A2%20Milan%20%26%20New%20Delhi&amp;descAlignY=56&amp;descSize=16&amp;animation=fadeIn&amp;fontFamily=Georgia" width="100%" alt="House Of Form Banner"/>
 
 <br/>
 
@@ -14,10 +14,10 @@
 
 <br/>
 
-[![Status](https://img.shields.io/badge/STATUS-IN%20ATELIER-A6865A?style=for-the-badge&labelColor=191816)](#)
-[![License](https://img.shields.io/badge/LICENSE-PRIVATE%20%26%20CONFIDENTIAL-736B63?style=for-the-badge&labelColor=191816)](#-license)
-[![Made In](https://img.shields.io/badge/CRAFTED%20IN-INDIA%20%F0%9F%87%AE%F0%9F%87%B3-A6865A?style=for-the-badge&labelColor=191816)](#)
-[![PRs](https://img.shields.io/badge/PRs-WELCOME-736B63?style=for-the-badge&labelColor=191816)](#)
+[![Status](https://img.shields.io/badge/STATUS-IN%20ATELIER-A6865A?style=for-the-badge&amp;labelColor=191816)](#)
+[![License](https://img.shields.io/badge/LICENSE-PRIVATE%20%26%20CONFIDENTIAL-736B63?style=for-the-badge&amp;labelColor=191816)](#-license)
+[![Made In](https://img.shields.io/badge/CRAFTED%20IN-INDIA%20%F0%9F%87%AE%F0%9F%87%B3-A6865A?style=for-the-badge&amp;labelColor=191816)](#)
+[![PRs](https://img.shields.io/badge/PRs-WELCOME-736B63?style=for-the-badge&amp;labelColor=191816)](#)
 
 <br/>
 
@@ -52,7 +52,7 @@
 <br/>
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:FBF9F5,50:F5F2EB,100:FBF9F5&height=4&section=header" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&amp;color=0:FBF9F5,50:F5F2EB,100:FBF9F5&amp;height=4&amp;section=header" width="100%"/>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════════════════════ -->

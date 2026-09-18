@@ -284,51 +284,48 @@ export const GLOBAL_BRAND_SEO = {
 };
 
 export const PRODUCT_SEO_REGISTRY: Record<string, ProductSEOConfig> = {
-  // PRODUCT 01 — THE VELORA
-  'HOF-SF-VLR-001': {
-    productId: 'HOF-SF-VLR-001',
-    productNo: '01',
-    productCode: 'VEL-01',
-    productName: 'The Velora',
-    sku: 'HOF-SF-VLR-001',
-    category: 'Luxury Lounge Sofas',
-    subcategory: 'Soft Contemporary / Curved Profile',
-    seoTitle: 'The Velora | Italian-Inspired Luxury Curved Sofa | House Of Form',
+  // PRODUCT 11 — THE AVERON
+  'HOF-SF-AVE-011': {
+    productId: 'HOF-SF-AVE-011',
+    productNo: '11',
+    productCode: 'EW26',
+    productName: 'The Averon',
+    sku: 'HOF-SF-AVE-011',
+    category: 'Contemporary Sofas',
+    subcategory: 'Tailored Contemporary / Architectural Luxury',
+    seoTitle: 'The Averon | Bespoke Architectural Leather Sofa | House Of Form',
     altGeoTitle:
-      'Bespoke Curved Luxury Sofa in Delhi NCR, Mumbai, Bengaluru, Hyderabad, Chennai, Pune, Kolkata & Ahmedabad | The Velora',
+      'Bespoke Architectural Leather Sofa in Delhi NCR, Mumbai, Bengaluru, Hyderabad, Chennai, Pune, Kolkata & Ahmedabad | The Averon',
     metaDescription:
-      'Discover The Velora by House Of Form: An Italian-inspired bespoke curved lounge sofa available in 1, 2, 3 and 4 seater configurations. Delivered and commissioned with white-glove service across all Tier 1 cities in India including Delhi NCR, Mumbai, Bengaluru, Hyderabad, Pune, Chennai, Kolkata & Ahmedabad.',
-    canonicalSlug: '/sofas/the-velora',
+      'Discover The Averon by House Of Form: A bespoke architectural leather sofa framed by a continuous dark walnut plinth and brushed brass vertical accents. Handcrafted in India with white-glove commissioning across Tier 1 Indian cities.',
+    canonicalSlug: '/sofas/the-averon',
     keywords: {
       primary: [
-        'luxury sofa india',
-        'curved sofa india',
-        'bespoke sofa delhi ncr',
-        'italian curved sofa mumbai',
-        'custom luxury sofa bengaluru',
-        'designer sofa hyderabad',
-        'curved lounge sofa pune',
+        'architectural leather sofa india',
+        'bespoke leather sofa delhi ncr',
+        'walnut plinth sofa mumbai',
+        'brass accent sofa bengaluru',
+        'luxury contemporary leather sofa hyderabad',
+        'tailored leather lounge sofa pune',
         'luxury furniture chennai',
         'architectural sofa kolkata',
         'villa luxury sofa ahmedabad',
       ],
       secondary: [
-        'curved sofa design living room',
-        'luxury contemporary sofa india',
-        'made to order sofa delhi',
-        'modern curved lounge sofa mumbai',
-        '4 seater luxury sofa india',
-        'italian designer sofa bengaluru',
-        'boucle curved sofa hyderabad',
-        'penthouse sofa design pune',
+        'full leather upholstery sofa india',
+        'dark walnut base leather sofa',
+        'brushed brass detail furniture',
+        'straight elongated silhouette couch',
+        'house of form averon',
+        'made to order bespoke leather sofa',
+        'low profile architectural leather sofa',
       ],
       longTail: [
-        'italian design curved sofa made in india',
-        'bespoke furniture for villas gurugram',
-        'custom upholstered curved sofa south mumbai',
-        'luxury living room sofa 3 seater curved bengaluru',
-        'designer curved couch for penthouses jubilee hills',
-        'handcrafted luxury sofa delivery across tier 1 cities india',
+        'bespoke architectural leather sofa with dark wood plinth and brass accents',
+        'contemporary italian inspired leather sofa crafted in india',
+        'custom full leather sofa for villas penthouses gurugram delhi',
+        'luxury living room low profile leather sofa jubilee hills banjara hills',
+        'handcrafted bespoke leather sofa delivery across tier 1 cities india',
       ],
       geo: [
         'Delhi NCR (Gurugram & South Delhi)',
@@ -342,165 +339,19 @@ export const PRODUCT_SEO_REGISTRY: Record<string, ProductSEOConfig> = {
       ],
     },
     openGraph: {
-      title: 'The Velora — Italian-Inspired Luxury Curved Sofa | House Of Form',
+      title: 'The Averon — Bespoke Architectural Leather Sofa | House Of Form',
       description:
-        'A bespoke curved lounge sofa inspired by Italian design sensibility and handcrafted in India. Commissioned across Delhi NCR, Mumbai, Bengaluru, Hyderabad, Chennai, Pune, Kolkata & Ahmedabad.',
+        'A quiet balance between soft leather upholstery, continuous walnut plinth structure, and brushed brass vertical accents. Handcrafted in India.',
       type: 'product',
-      imageAlt: 'The Velora Italian-Inspired Curved Luxury Sofa in Bouclé Avorio',
+      imageAlt: 'The Averon Bespoke Architectural Leather Sofa in Burnished Cognac',
     },
     twitterCard: {
-      title: 'The Velora — Curved Luxury Lounge Sofa | House Of Form',
+      title: 'The Averon — Architectural Leather Sofa | House Of Form',
       description:
-        'Where Italian design sensibility meets bespoke Indian craftsmanship. Custom configurations in 1, 2, 3 & 4 seater for Tier 1 Indian residences.',
+        'Softness, framed by structure. Continuous dark walnut plinth, brushed brass accents, and full semi-aniline leather upholstery.',
     },
     structuredData: {
-      priceRange: '₹1,65,000 – ₹2,95,000',
-      availability: 'https://schema.org/PreOrder',
-      itemCondition: 'https://schema.org/NewCondition',
-    },
-  },
-
-  // PRODUCT 02 — THE ELYRA
-  'HOF-SF-ELY-002': {
-    productId: 'HOF-SF-ELY-002',
-    productNo: '02',
-    productCode: 'EW1',
-    productName: 'The Elyra',
-    sku: 'HOF-SF-ELY-002',
-    category: 'Contemporary Sofas',
-    subcategory: 'Architectural Contemporary / Asymmetric Sofa',
-    seoTitle: 'The Elyra — Bespoke Asymmetric Lounge Sofa | House Of Form',
-    altGeoTitle:
-      'Bespoke Architectural Asymmetric Sofa Delhi NCR, Mumbai, Bengaluru, Hyderabad, Chennai, Pune, Kolkata & Ahmedabad | The Elyra',
-    metaDescription:
-      'Discover The Elyra: An architectural lounge sofa with an asymmetric silhouette, sculptural single arm, integrated wooden side table, and continuous timber plinth. Delivered with white-glove commissioning across all Tier 1 cities in India.',
-    canonicalSlug: '/sofas/the-elyra',
-    keywords: {
-      primary: [
-        'asymmetric sofa india',
-        'architectural lounge sofa delhi',
-        'sofa with integrated side table mumbai',
-        'contemporary european sofa bengaluru',
-        'designer asymmetric couch hyderabad',
-        'luxury timber plinth sofa chennai',
-        'single arm modern sofa pune',
-        'bespoke living room sofa kolkata',
-        'modern villa sofa ahmedabad',
-      ],
-      secondary: [
-        'wooden plinth sofa india',
-        'single arm couch luxury',
-        'bespoke luxury furniture mumbai',
-        'house of form elyra',
-        'dual material sofa wood and fabric',
-        'architectural furniture architects india',
-        'low profile sofa with built in table',
-      ],
-      longTail: [
-        'custom asymmetric sofa with built-in wooden side table',
-        'low profile architectural sofa for penthouse living room',
-        'designer lounge sofa with timber platform base made in india',
-        'bespoke contemporary sofa delivered to tier 1 cities',
-        'luxury asymmetric seating for architectural residences',
-      ],
-      geo: [
-        'Delhi NCR (DLF Golf Links & Chanakyapuri)',
-        'Mumbai (Worli Sea Face & Malabar Hill)',
-        'Bengaluru (Sadashivnagar & Lavelle Road)',
-        'Hyderabad (Jubilee Hills & Financial District)',
-        'Chennai (Boat Club Road & ECR)',
-        'Pune (Koregaon Park & Boat Club Road)',
-        'Kolkata (Alipore & Queen’s Park)',
-        'Ahmedabad (Ambli Road & Bodakdev)',
-      ],
-    },
-    openGraph: {
-      title: 'The Elyra — Bespoke Asymmetric Lounge Sofa | House Of Form',
-      description:
-        'Architectural form. Integrated function. Sculptural single-arm sofa featuring an integrated solid timber side table. Commissioned across all Tier 1 cities in India.',
-      type: 'product',
-      imageAlt: 'The Elyra Asymmetric Lounge Sofa with Integrated Wooden Side Table',
-    },
-    twitterCard: {
-      title: 'The Elyra — Architectural Lounge Sofa | House Of Form',
-      description:
-        'Asymmetric silhouette with integrated timber plinth and side table. Crafted to order in India for Tier 1 residences.',
-    },
-    structuredData: {
-      priceRange: '₹2,10,000 – ₹2,80,000',
-      availability: 'https://schema.org/PreOrder',
-      itemCondition: 'https://schema.org/NewCondition',
-    },
-  },
-
-  // PRODUCT 03 — THE AVORA
-  'HOF-SF-AVR-003': {
-    productId: 'HOF-SF-AVR-003',
-    productNo: '03',
-    productCode: 'EW1',
-    productName: 'The Avora',
-    sku: 'HOF-SF-AVR-003',
-    category: 'Luxury Lounge Sofas',
-    subcategory: 'Soft Contemporary / Modular Lounge',
-    seoTitle: 'The Avora | Bespoke Luxury Modular Lounge Sofa | House Of Form',
-    altGeoTitle:
-      'Bespoke Modular Lounge Sofa across Tier 1 Metros: Delhi NCR, Mumbai, Bengaluru, Hyderabad, Chennai, Pune, Kolkata & Ahmedabad | The Avora',
-    metaDescription:
-      'Discover The Avora, a bespoke modular lounge sofa by House Of Form. Low-profile contemporary design with sculpted curves, continuous upholstered body and deep comfort. Commissioned with white-glove setup across all Tier 1 cities in India.',
-    canonicalSlug: '/sofas/the-avora',
-    keywords: {
-      primary: [
-        'luxury modular sofa india',
-        'bespoke modular sofa delhi ncr',
-        'luxury lounge sofa mumbai',
-        'designer modular sofa bengaluru',
-        'premium modular couch hyderabad',
-        'contemporary low profile sofa pune',
-        'modular living room sofa chennai',
-        'bespoke sectional sofa kolkata',
-        'luxury villa modular sofa ahmedabad',
-      ],
-      secondary: [
-        'luxury living room modular sofa',
-        'contemporary luxury furniture india',
-        'custom sofa makers tier 1 india',
-        'designer modular sofa with rounded arms',
-        'premium furniture stores india',
-        'italian design inspired modular sofa',
-        'european design low profile sofa',
-      ],
-      longTail: [
-        'low profile modular lounge sofa with sculpted rounded arms',
-        'bespoke contemporary sofa with discreet sculptural feet',
-        'custom luxury modular sofa for penthouse living room mumbai',
-        'deep comfort lounge sofa made in india with white glove delivery',
-        'modular curved lounge seating for modern apartments and villas',
-      ],
-      geo: [
-        'Delhi NCR (Gurugram, New Delhi & Noida)',
-        'Mumbai (South Mumbai, Worli & Bandra)',
-        'Bengaluru (Indiranagar, Lavelle Road & Whitefield)',
-        'Hyderabad (Jubilee Hills & Banjara Hills)',
-        'Chennai (Boat Club & Poes Garden)',
-        'Pune (Koregaon Park & Kalyani Nagar)',
-        'Kolkata (Alipore & Ballygunge)',
-        'Ahmedabad (Ambli Road & Sindhu Bhavan Road)',
-      ],
-    },
-    openGraph: {
-      title: 'The Avora — Bespoke Luxury Modular Sofa | House Of Form',
-      description:
-        'Softness, given form. A low-profile modular lounge sofa with sculpted rounded arms, deep seating, and continuous body. Commissioned across all Tier 1 Indian cities.',
-      type: 'product',
-      imageAlt: 'The Avora Low-Profile Modular Lounge Sofa in Textured Bouclé',
-    },
-    twitterCard: {
-      title: 'The Avora — Bespoke Modular Lounge Sofa | House Of Form',
-      description:
-        'Softness, given form. Low-profile silhouette with sculpted rounded arms and continuous upholstered body for Tier 1 Indian residences.',
-    },
-    structuredData: {
-      priceRange: '₹1,95,000 – ₹3,45,000',
+      priceRange: '₹2,65,000 – ₹3,95,000',
       availability: 'https://schema.org/PreOrder',
       itemCondition: 'https://schema.org/NewCondition',
     },

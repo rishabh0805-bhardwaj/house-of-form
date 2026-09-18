@@ -429,6 +429,10 @@ export interface Reservation {
   rejectedMaterialIds: string[];
   consultationId?: string;
   paymentRef: string;
+  selectedLeatherId?: string;
+  selectedLeatherName?: string;
+  selectedLeatherHex?: string;
+  selectedLeatherSwatch?: string;
 }
 
 export interface Lead {

@@ -185,13 +185,7 @@ export const Footer: React.FC = () => {
             © {new Date().getFullYear()} HOUSE OF FORM. All design rights, proprietary silhouettes and material library specifications reserved.
           </p>
           <div className="flex items-center space-x-6">
-            <span className="text-[#968E85]">Manufactured in India with European Design Sensibility</span>
-            <button
-              onClick={() => navigateTo('admin')}
-              className="text-[#C5A880] hover:underline uppercase text-[10px] tracking-widest cursor-pointer"
-            >
-              Management CRM Access
-            </button>
+            <span className="text-[#968E85]">Manufactured with ❤️ in India</span>
           </div>
         </div>
       </div>

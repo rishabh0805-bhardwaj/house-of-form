@@ -28,7 +28,7 @@ export const HomeView: React.FC = () => {
     setSelectedCategory,
   } = useStore();
 
-  const flagship = products.find((p) => p.id === 'HOF-SF-VLR-001') || products[0];
+  const flagship = products.find((p) => p.id === 'HOF-SF-AVE-011') || products[0];
 
   const navigateToProduct = (id: string) => {
     setSelectedProductId(id);
@@ -180,22 +180,22 @@ export const HomeView: React.FC = () => {
             </div>
 
             <p className="text-xs sm:text-sm text-[#4A453F] leading-relaxed">
-              The continuous curved profile that transformed Indian luxury living spaces. Soft contemporary contours, generous wraparound back, and pocketed feather-down comfort that eliminates right angles.
+              {flagship.productStory}
             </p>
 
             <div className="border-t border-b border-[#E6DFD5] py-3.5 flex justify-between items-center text-xs">
               <span className="text-[#736B63] uppercase tracking-wider">Catalogue Starting Price</span>
-              <span className="font-serif text-xl text-[#191816] font-medium">₹1,65,000 – ₹3,20,000</span>
+              <span className="font-serif text-xl text-[#191816] font-medium">Starting from ₹{flagship.startingPrice.toLocaleString('en-IN')}</span>
             </div>
 
             {/* Direct Links */}
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <button
-                id="home-explore-velora-btn"
+                id="home-explore-averon-btn"
                 onClick={() => navigateToProduct(flagship.id)}
                 className="flex-1 bg-[#191816] hover:bg-[#2C2926] text-[#FBF9F5] py-3.5 px-6 text-xs tracking-[0.2em] uppercase font-medium flex items-center justify-center space-x-2 transition-all cursor-pointer"
               >
-                <span>Discover The Velora</span>
+                <span>Discover {flagship.name}</span>
                 <ArrowRight className="w-4 h-4 text-[#C5A880]" />
               </button>
               

@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #FBF9F5; }
+      .grid-line { stroke: #ECE6DC; stroke-width: 1; stroke-dasharray: 4 4; }
+      .outline { fill: #EBE5DC; stroke: #3D342C; stroke-width: 2.5; stroke-linejoin: round; }
+      .cushion { fill: #D9C8B4; stroke: #3D342C; stroke-width: 2; }
+      .wood-plinth { fill: #4A3525; stroke: #261A12; stroke-width: 2; }
+      .brass-accent { fill: #C5A880; stroke: #8F7249; stroke-width: 1.5; }
+      .dim-line { stroke: #736B63; stroke-width: 1.5; }
+      .dim-arrow { fill: #736B63; }
+      .dim-text { font-family: 'Playfair Display', Georgia, serif; font-size: 14px; fill: #191816; text-anchor: middle; font-weight: 500; }
+      .dim-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; fill: #736B63; text-anchor: middle; letter-spacing: 0.05em; }
+      .header-title { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; fill: #191816; letter-spacing: 0.15em; text-transform: uppercase; }
+      .header-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; fill: #A6865A; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 600; }
+      .spec-box { fill: #FFFFFF; stroke: #E6DFD5; stroke-width: 1; }
+      .spec-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 9px; fill: #8C827A; letter-spacing: 0.15em; text-transform: uppercase; }
+      .spec-val { font-family: 'Playfair Display', Georgia, serif; font-size: 14px; fill: #191816; font-weight: 600; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="800" class="bg" />
+
+  <!-- Grid lines -->
+  <line x1="80" y1="120" x2="1120" y2="120" class="grid-line" />
+  <line x1="80" y1="460" x2="1120" y2="460" class="grid-line" />
+  <line x1="600" y1="120" x2="600" y2="720" class="grid-line" />
+
+  <!-- Sheet Header -->
+  <text x="80" y="70" class="header-sub">House Of Form · Technical Dimension Sheet · Reference EW26</text>
+  <text x="80" y="98" class="header-title">The Averon — Bespoke Architectural Leather Sofa</text>
+  <text x="1120" y="70" text-anchor="end" class="header-sub">Master SKU: HOF-SF-AVE-011</text>
+  <text x="1120" y="95" text-anchor="end" class="dim-sub">Proposed Standard Specification (3.5 Seater)</text>
+
+  <!-- ================= VIEW A: FRONT ELEVATION ================= -->
+  <g id="front-elevation" transform="translate(80, 150)">
+    <text x="240" y="30" class="header-sub" text-anchor="middle">Front Architectural Elevation</text>
+
+    <!-- Sofa Back & Body -->
+    <path d="M 40 160 Q 40 90 70 90 L 410 90 Q 440 90 440 160 L 440 220 L 40 220 Z" class="outline" />
+    
+    <!-- Cushions divisions -->
+    <line x1="173" y1="100" x2="173" y2="220" stroke="#3D342C" stroke-width="1.5" stroke-dasharray="2 2" />
+    <line x1="306" y1="100" x2="306" y2="220" stroke="#3D342C" stroke-width="1.5" stroke-dasharray="2 2" />
+    
+    <!-- Rounded Outer Arms -->
+    <path d="M 40 220 C 35 150 45 120 70 120 L 85 120 L 85 220 Z" class="cushion" />
+    <path d="M 440 220 C 445 150 435 120 410 120 L 395 120 L 395 220 Z" class="cushion" />
+
+    <!-- Brushed Brass Vertical Accents (Key Signature Detail) -->
+    <rect x="52" y="130" width="5" height="85" rx="1.5" class="brass-accent" />
+    <rect x="423" y="130" width="5" height="85" rx="1.5" class="brass-accent" />
+
+    <!-- Continuous Solid American Walnut Plinth -->
+    <rect x="36" y="220" width="408" height="18" rx="2" class="wood-plinth" />
+
+    <!-- Dimension: Total Width 260 cm -->
+    <line x1="36" y1="265" x2="444" y2="265" class="dim-line" />
+    <line x1="36" y1="250" x2="36" y2="275" class="dim-line" />
+    <line x1="444" y1="250" x2="444" y2="275" class="dim-line" />
+    <polygon points="36,265 46,261 46,269" class="dim-arrow" />
+    <polygon points="444,265 434,261 434,269" class="dim-arrow" />
+    <text x="240" y="285" class="dim-text">260 cm</text>
+    <text x="240" y="300" class="dim-sub">approx. 102 in (Standard Width)</text>
+
+    <!-- Dimension: Total Height 76 cm -->
+    <line x1="15" y1="90" x2="15" y2="238" class="dim-line" />
+    <line x1="5" y1="90" x2="25" y2="90" class="dim-line" />
+    <line x1="5" y1="238" x2="25" y2="238" class="dim-line" />
+    <polygon points="15,90 11,100 19,100" class="dim-arrow" />
+    <polygon points="15,238 11,228 19,228" class="dim-arrow" />
+    <text x="-5" y="160" class="dim-text" transform="rotate(-90 -5 160)">76 cm (30")</text>
+
+    <!-- Dimension: Seat Height 42 cm -->
+    <line x1="465" y1="168" x2="465" y2="238" class="dim-line" />
+    <line x1="455" y1="168" x2="475" y2="168" class="dim-line" />
+    <line x1="455" y1="238" x2="475" y2="238" class="dim-line" />
+    <polygon points="465,168 461,178 469,178" class="dim-arrow" />
+    <polygon points="465,238 461,228 469,228" class="dim-arrow" />
+    <text x="490" y="206" class="dim-text" text-anchor="start">42 cm</text>
+    <text x="490" y="220" class="dim-sub" text-anchor="start">Seat H: 16.5"</text>
+  </g>
+
+  <!-- ================= VIEW B: SIDE PROFILE ELEVATION ================= -->
+  <g id="side-elevation" transform="translate(680, 150)">
+    <text x="200" y="30" class="header-sub" text-anchor="middle">Side Profile &amp; Arm Detail</text>
+
+    <!-- Profile Shape -->
+    <path d="M 80 220 L 80 120 Q 80 90 120 90 L 150 90 Q 165 90 170 130 L 170 160 L 300 160 Q 320 160 320 180 L 320 220 Z" class="outline" />
+    
+    <!-- Arm Contour Cushion -->
+    <path d="M 95 220 L 95 130 Q 95 110 130 110 L 285 110 Q 305 110 305 140 L 305 220 Z" class="cushion" />
+
+    <!-- Brushed Brass Vertical Trim on Arm Facet -->
+    <rect x="290" y="125" width="6" height="90" rx="1.5" class="brass-accent" />
+    
+    <!-- Walnut Plinth Base (Side) -->
+    <rect x="75" y="220" width="235" height="18" rx="2" class="wood-plinth" />
+
+    <!-- Seat Depth Dimension: 68 cm -->
+    <line x1="160" y1="150" x2="295" y2="150" class="dim-line" stroke="#A6865A" />
+    <polygon points="160,150 168,147 168,153" fill="#A6865A" />
+    <polygon points="295,150 287,147 287,153" fill="#A6865A" />
+    <text x="228" y="142" class="dim-text" fill="#A6865A">Seat Depth: 68 cm</text>
+    <text x="228" y="165" class="dim-sub" fill="#A6865A">(approx. 27 in Deep Lounge)</text>
+
+    <!-- Overall Depth Dimension: 105 cm -->
+    <line x1="75" y1="265" x2="310" y2="265" class="dim-line" />
+    <line x1="75" y1="250" x2="75" y2="275" class="dim-line" />
+    <line x1="310" y1="250" x2="310" y2="275" class="dim-line" />
+    <polygon points="75,265 85,261 85,269" class="dim-arrow" />
+    <polygon points="310,265 300,261 300,269" class="dim-arrow" />
+    <text x="192" y="285" class="dim-text">105 cm</text>
+    <text x="192" y="300" class="dim-sub">approx. 41 in (Overall Depth)</text>
+
+    <!-- Annotation Callouts -->
+    <g transform="translate(325, 150)">
+      <line x1="0" y1="0" x2="40" y2="-20" stroke="#736B63" stroke-width="1" />
+      <circle cx="40" cy="-20" r="3" fill="#C5A880" />
+      <text x="48" y="-23" class="dim-sub" text-anchor="start" font-weight="600" fill="#191816">Brushed Brass Inset</text>
+      <text x="48" y="-10" class="dim-sub" text-anchor="start">Vertical arm accent</text>
+    </g>
+
+    <g transform="translate(240, 230)">
+      <line x1="0" y1="0" x2="40" y2="30" stroke="#736B63" stroke-width="1" />
+      <circle cx="40" cy="30" r="3" fill="#4A3525" />
+      <text x="48" y="28" class="dim-sub" text-anchor="start" font-weight="600" fill="#191816">Solid Walnut Plinth</text>
+      <text x="48" y="41" class="dim-sub" text-anchor="start">Continuous perimeter base</text>
+    </g>
+  </g>
+
+  <!-- ================= SPECIFICATION SUMMARY TABLE ================= -->
+  <g id="spec-grid" transform="translate(80, 500)">
+    <rect x="0" y="0" width="1040" height="220" class="spec-box" rx="4" />
+
+    <!-- Column 1: Dimensions -->
+    <g transform="translate(40, 30)">
+      <text x="0" y="0" class="header-sub">01 · Proposed Dimensions</text>
+      <text x="0" y="30" class="spec-label">Overall Width</text>
+      <text x="0" y="48" class="spec-val">260 cm (approx. 102 in)</text>
+      <text x="0" y="75" class="spec-label">Overall Depth &amp; Height</text>
+      <text x="0" y="93" class="spec-val">105 cm (41") × 76 cm (30")</text>
+      <text x="0" y="120" class="spec-label">Seat Height &amp; Depth</text>
+      <text x="0" y="138" class="spec-val">42 cm (16.5") · 68 cm (27")</text>
+    </g>
+
+    <!-- Column 2: Materials -->
+    <g transform="translate(380, 30)">
+      <text x="0" y="0" class="header-sub">02 · Materials &amp; Finishes</text>
+      <text x="0" y="30" class="spec-label">Upholstery</text>
+      <text x="0" y="48" class="spec-val">Italian Semi-Aniline Leather</text>
+      <text x="0" y="64" class="dim-sub" text-anchor="start">Warm Cognac / Saddle Tan with natural pull-up</text>
+      <text x="0" y="90" class="spec-label">Timber Plinth</text>
+      <text x="0" y="108" class="spec-val">Solid American Walnut</text>
+      <text x="0" y="124" class="dim-sub" text-anchor="start">Dark Espresso / Smoked Walnut Low-Sheen Satin</text>
+      <text x="0" y="150" class="spec-label">Metallic Trim</text>
+      <text x="0" y="168" class="spec-val">Vertical Brushed Brass</text>
+    </g>
+
+    <!-- Column 3: Crafting & Ordering -->
+    <g transform="translate(730, 30)">
+      <text x="0" y="0" class="header-sub">03 · Bespoke Commissioning</text>
+      <text x="0" y="30" class="spec-label">Order Model</text>
+      <text x="0" y="48" class="spec-val">Made to Order in India</text>
+      <text x="0" y="75" class="spec-label">Lead Time</text>
+      <text x="0" y="93" class="spec-val">6–8 Weeks White-Glove</text>
+      <text x="0" y="120" class="spec-label">Starting Price</text>
+      <text x="0" y="138" class="spec-val" fill="#A6865A">₹3,85,000</text>
+      <text x="0" y="154" class="dim-sub" text-anchor="start">Available on Consultation · Bespoke Sizing</text>
+    </g>
+  </g>
+</svg>

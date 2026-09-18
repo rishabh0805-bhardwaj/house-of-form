@@ -31,6 +31,7 @@ import {
 import { ConsultationModal } from './ConsultationModal';
 import { MotionFadeIn } from './MotionFadeIn';
 import { VeloraMasterSheet } from './VeloraMasterSheet';
+import { CanyonSwatchSelector } from './CanyonSwatchSelector';
 
 export const ProductDetailView: React.FC = () => {
   const {
@@ -47,6 +48,7 @@ export const ProductDetailView: React.FC = () => {
     toggleWishlist,
     isInWishlist,
     setIsWishlistDrawerOpen,
+    selectedLeather,
   } = useStore();
 
   const product = products.find((p) => p.id === selectedProductId) || products[0];
@@ -458,6 +460,9 @@ export const ProductDetailView: React.FC = () => {
               </div>
             </div>
 
+            {/* Curated Leather Swatch Selection Section */}
+            <CanyonSwatchSelector onReserveClick={handleOpenReservation} />
+
             {/* THE CORE MECHANISM: Furniture Reservation Box */}
             <div className="bg-[#191816] text-[#FBF9F5] p-5 sm:p-6 border border-[#2C2926] shadow-md space-y-4">
               <div className="flex items-start justify-between">
@@ -475,6 +480,26 @@ export const ProductDetailView: React.FC = () => {
               <p className="text-xs text-[#D1C7BB] leading-relaxed">
                 Secure your slot in our bespoke production queue. Each piece is individually bench-crafted to your ordered dimensions and fabric choice.
               </p>
+
+              {/* Selected Leather Affirmation */}
+              <div className="bg-[#23201D] p-3 border border-[#3E3A36] flex items-center justify-between gap-3">
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <div className="w-9 h-9 rounded-full overflow-hidden border border-[#C5A880] shrink-0 shadow-inner">
+                    <img src={selectedLeather.swatchImage} alt={selectedLeather.name} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-[10px] text-[#C5A880] uppercase tracking-wider font-semibold">
+                      Upholstery Specified
+                    </div>
+                    <div className="text-xs text-[#FBF9F5] font-serif uppercase tracking-wide truncate">
+                      {selectedLeather.name} · {selectedLeather.colorName}
+                    </div>
+                  </div>
+                </div>
+                <span className="text-[9px] uppercase tracking-wider bg-[#191816] text-[#D1C7BB] px-2 py-1 border border-[#3E3A36] shrink-0 font-mono">
+                  {selectedLeather.sku}
+                </span>
+              </div>
 
               {/* Clarifying Reservation & Accounting */}
               <div className="bg-[#2C2926] p-3 border border-[#3E3A36] space-y-1.5 text-xs">

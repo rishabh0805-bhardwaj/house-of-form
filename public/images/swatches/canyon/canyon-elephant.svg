@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <!-- Procedural Leather Grain Texture -->
+    <filter id="leatherGrain-canyon-elephant" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
+      <feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="4" seed="42" result="noise" />
+      <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" in="noise" result="monoNoise"/>
+      <feComponentTransfer in="monoNoise" result="contrastNoise">
+        <feFuncR type="linear" slope="1.4" intercept="-0.2"/>
+        <feFuncG type="linear" slope="1.4" intercept="-0.2"/>
+        <feFuncB type="linear" slope="1.4" intercept="-0.2"/>
+      </feComponentTransfer>
+      <feDiffuseLighting in="contrastNoise" lightingColor="#ffffff" surfaceScale="1.2" result="light">
+        <feDistantLight azimuth="125" elevation="55"/>
+      </feDiffuseLighting>
+      <feBlend mode="multiply" in="SourceGraphic" in2="light" result="textured"/>
+    </filter>
+
+    <!-- Natural Leather Curvature & Ambient Roll Highlight -->
+    <linearGradient id="lighting-canyon-elephant" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B3AAA0" stop-opacity="0.9" />
+      <stop offset="45%" stop-color="#A49C91" stop-opacity="1" />
+      <stop offset="75%" stop-color="#A49C91" stop-opacity="1" />
+      <stop offset="100%" stop-color="#8F867C" stop-opacity="0.95" />
+    </linearGradient>
+
+    <!-- Diagonal Pull-Up Sheen -->
+    <linearGradient id="pullUpSheen-canyon-elephant" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.08" />
+      <stop offset="45%" stop-color="#ffffff" stop-opacity="0.14" />
+      <stop offset="55%" stop-color="#ffffff" stop-opacity="0.03" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.15" />
+    </linearGradient>
+
+    <!-- Vignette Shadow for Depth -->
+    <radialGradient id="vignette-canyon-elephant" cx="50%" cy="50%" r="70%">
+      <stop offset="60%" stop-color="#000000" stop-opacity="0" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.22" />
+    </radialGradient>
+  </defs>
+
+  <!-- Base Leather Body with Grain Shader -->
+  <rect width="600" height="600" fill="url(#lighting-canyon-elephant)" />
+  <rect width="600" height="600" fill="#A49C91" filter="url(#leatherGrain-canyon-elephant)" opacity="0.82" />
+  <rect width="600" height="600" fill="url(#pullUpSheen-canyon-elephant)" />
+  <rect width="600" height="600" fill="url(#vignette-canyon-elephant)" />
+
+  <!-- Atelier Perforated / Blind-Debossed Border Accent -->
+  <rect x="24" y="24" width="552" height="552" fill="none" stroke="#80776E" stroke-width="1" stroke-dasharray="6 4" opacity="0.35" />
+  <rect x="20" y="20" width="560" height="560" fill="none" stroke="#000000" stroke-width="0.75" opacity="0.15" />
+
+  <!-- Subtle Corner Bracket Accents -->
+  <path d="M 40 50 L 50 50 L 50 40" fill="none" stroke="#B3AAA0" stroke-width="1.2" opacity="0.4" />
+  <path d="M 560 50 L 550 50 L 550 40" fill="none" stroke="#B3AAA0" stroke-width="1.2" opacity="0.4" />
+  <path d="M 40 550 L 50 550 L 50 560" fill="none" stroke="#B3AAA0" stroke-width="1.2" opacity="0.4" />
+  <path d="M 560 550 L 550 550 L 550 560" fill="none" stroke="#B3AAA0" stroke-width="1.2" opacity="0.4" />
+</svg>

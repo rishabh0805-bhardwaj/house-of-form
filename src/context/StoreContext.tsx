@@ -30,6 +30,10 @@ import {
   INITIAL_SETTINGS,
   INITIAL_ANALYTICS,
 } from '../data/seedData';
+import {
+  CANYON_LEATHERS,
+  CanyonLeather,
+} from '../data/canyonLeathers';
 
 interface ReservationSubmission {
   name: string;
@@ -42,6 +46,10 @@ interface ReservationSubmission {
   projectNotes?: string;
   productId: string;
   variantId: string;
+  leatherId?: string;
+  leatherName?: string;
+  leatherHex?: string;
+  leatherSwatch?: string;
 }
 
 interface StoreContextType {
@@ -60,6 +68,12 @@ interface StoreContextType {
   setIsReservationModalOpen: (open: boolean) => void;
   activeReservationId: string | null;
   setActiveReservationId: (id: string | null) => void;
+
+  // Leather & Swatch Atelier Selection
+  selectedLeatherId: string;
+  setSelectedLeatherId: (id: string) => void;
+  selectedLeather: CanyonLeather;
+  canyonLeathers: CanyonLeather[];
 
   // Data
   products: Product[];
@@ -119,11 +133,15 @@ const STORAGE_KEY_WISHLIST = 'hof_wishlist_v1';
 export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [currentView, setCurrentView] = useState<string>('home');
   const [adminSubView, setAdminSubView] = useState<string>('crm');
-  const [selectedProductId, setSelectedProductId] = useState<string>('HOF-SF-VLR-001');
+  const [selectedProductId, setSelectedProductId] = useState<string>('HOF-SF-AVE-011');
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isReservationModalOpen, setIsReservationModalOpen] = useState<boolean>(false);
   const [activeReservationId, setActiveReservationId] = useState<string | null>('HOF-RES-2026-0042');
+  const [selectedLeatherId, setSelectedLeatherId] = useState<string>('canyon-saddle');
+
+  const selectedLeather =
+    CANYON_LEATHERS.find((l) => l.id === selectedLeatherId) || CANYON_LEATHERS[5]; // Default: Canyon Saddle
 
   useEffect(() => {
     const handleScroll = () => {
@@ -185,9 +203,9 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [wishlist, setWishlist] = useState<string[]>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY_WISHLIST);
-      return saved ? JSON.parse(saved) : ['HOF-SF-VLR-001'];
+      return saved ? JSON.parse(saved) : ['HOF-SF-AVE-011'];
     } catch {
-      return ['HOF-SF-VLR-001'];
+      return ['HOF-SF-AVE-011'];
     }
   });
   const [isWishlistDrawerOpen, setIsWishlistDrawerOpen] = useState<boolean>(false);
@@ -324,6 +342,10 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       lovedMaterialIds: [],
       rejectedMaterialIds: [],
       paymentRef: `pay_rzp_${Date.now().toString().slice(-8)}`,
+      selectedLeatherId: sub.leatherId || selectedLeather.id,
+      selectedLeatherName: sub.leatherName || selectedLeather.name,
+      selectedLeatherHex: sub.leatherHex || selectedLeather.hex,
+      selectedLeatherSwatch: sub.leatherSwatch || selectedLeather.swatchImage,
     };
 
     // Calculate score
@@ -600,7 +622,7 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     setLeads(INITIAL_LEADS);
     setSettings(INITIAL_SETTINGS);
     setAnalytics(INITIAL_ANALYTICS);
-    setWishlist(['HOF-SF-VLR-001']);
+    setWishlist(['HOF-SF-AVE-011']);
     setActiveReservationId('HOF-RES-2026-0042');
   };
 
@@ -629,6 +651,10 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         clearWishlist,
         isSeoDrawerOpen,
         setIsSeoDrawerOpen,
+        selectedLeatherId,
+        setSelectedLeatherId,
+        selectedLeather,
+        canyonLeathers: CANYON_LEATHERS,
         products,
         materials,
         finishes,

@@ -29,6 +29,10 @@ export const MaterialAtelierModal: React.FC = () => {
     settings,
     createReservation,
     setCurrentView,
+    selectedLeather,
+    selectedLeatherId,
+    setSelectedLeatherId,
+    canyonLeathers,
   } = useStore();
 
   const product = products.find((p) => p.id === selectedProductId) || products[0];
@@ -93,6 +97,10 @@ export const MaterialAtelierModal: React.FC = () => {
         projectNotes,
         productId: product.id,
         variantId: selectedVariant.id,
+        leatherId: selectedLeather.id,
+        leatherName: selectedLeather.name,
+        leatherHex: selectedLeather.hex,
+        leatherSwatch: selectedLeather.swatchImage,
       });
 
       setConfirmedReservationId(res.id);
@@ -229,10 +237,50 @@ export const MaterialAtelierModal: React.FC = () => {
                   </div>
                 </div>
 
+                {/* Selected Leather Upholstery Section */}
+                <div className="pt-2">
+                  <div className="flex justify-between items-center mb-1.5">
+                    <label className="text-[11px] tracking-[0.16em] uppercase font-medium text-[#2C2926]">
+                      2. Selected Leather Upholstery
+                    </label>
+                    <span className="text-[10px] text-[#A6865A] uppercase font-semibold">The Canyon Atelier (18 Swatches)</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 bg-white border border-[#D1C7BB]">
+                    <div className="w-12 h-12 rounded-full overflow-hidden border border-[#191816] shrink-0 shadow-xs">
+                      <img src={selectedLeather.swatchImage} alt={selectedLeather.name} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <h4 className="text-xs font-serif font-bold uppercase tracking-wide text-[#191816] truncate">
+                          {selectedLeather.name}
+                        </h4>
+                        <span className="text-[9px] px-1.5 py-0.5 bg-[#191816] text-[#C5A880] uppercase tracking-wider font-mono">
+                          {selectedLeather.sku}
+                        </span>
+                      </div>
+                      <p className="text-[10px] text-[#736B63] truncate mt-0.5">
+                        {selectedLeather.tagline} · Full-Grain Semi-Aniline
+                      </p>
+                    </div>
+                    <select
+                      aria-label="Change leather swatch"
+                      value={selectedLeatherId}
+                      onChange={(e) => setSelectedLeatherId(e.target.value)}
+                      className="text-xs border border-[#D1C7BB] bg-[#FBF9F5] px-2 py-1.5 uppercase font-medium text-[#191816] cursor-pointer"
+                    >
+                      {canyonLeathers.map((l) => (
+                        <option key={l.id} value={l.id}>
+                          {l.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
                 {/* Client Contact Details */}
                 <div className="space-y-3 pt-2">
                   <label className="block text-[11px] tracking-[0.16em] uppercase font-medium text-[#2C2926]">
-                    2. Client & Delivery Details
+                    3. Client & Delivery Details
                   </label>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -297,7 +345,7 @@ export const MaterialAtelierModal: React.FC = () => {
                 {/* Project Context (Intent Qualification) */}
                 <div className="space-y-3 pt-2">
                   <label className="block text-[11px] tracking-[0.16em] uppercase font-medium text-[#2C2926]">
-                    3. Project Specification & Timeline
+                    4. Project Specification & Timeline
                   </label>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -407,6 +455,15 @@ export const MaterialAtelierModal: React.FC = () => {
                 <div className="flex justify-between font-medium text-[#191816]">
                   <span>Reserved Product</span>
                   <span>{product.name} — {selectedVariant.name}</span>
+                </div>
+                <div className="flex justify-between items-center text-[#736B63]">
+                  <span>Selected Leather</span>
+                  <span className="flex items-center gap-1.5 font-medium text-[#191816]">
+                    <span className="w-3.5 h-3.5 rounded-full overflow-hidden border border-[#191816] inline-block shadow-2xs">
+                      <img src={selectedLeather.swatchImage} alt={selectedLeather.name} className="w-full h-full object-cover" />
+                    </span>
+                    <span>{selectedLeather.name} ({selectedLeather.sku})</span>
+                  </span>
                 </div>
                 <div className="flex justify-between text-[#736B63]">
                   <span>Client</span>
@@ -575,6 +632,15 @@ export const MaterialAtelierModal: React.FC = () => {
                 <div className="flex justify-between">
                   <span className="text-[#736B63]">Piece Reserved</span>
                   <span className="font-medium text-[#191816]">{product.name} ({selectedVariant.name})</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[#736B63]">Selected Leather</span>
+                  <span className="font-medium text-[#191816] flex items-center gap-1.5">
+                    <span className="w-3.5 h-3.5 rounded-full overflow-hidden border border-[#191816] inline-block shadow-2xs">
+                      <img src={selectedLeather.swatchImage} alt={selectedLeather.name} className="w-full h-full object-cover" />
+                    </span>
+                    <span>{selectedLeather.name} ({selectedLeather.sku})</span>
+                  </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-[#736B63]">Reservation Amount Paid</span>

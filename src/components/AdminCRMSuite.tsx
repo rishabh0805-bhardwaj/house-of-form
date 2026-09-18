@@ -507,6 +507,18 @@ export const AdminCRMSuite: React.FC = () => {
                         <td className="p-3.5">
                           <div className="text-[#FBF9F5]">{res.productName}</div>
                           <div className="text-[11px] text-[#A6865A]">{res.variantName}</div>
+                          {res.selectedLeatherName && (
+                            <div className="flex items-center gap-1.5 mt-1">
+                              {res.selectedLeatherSwatch && (
+                                <span className="w-3.5 h-3.5 rounded-full overflow-hidden border border-white/20 inline-block shrink-0">
+                                  <img src={res.selectedLeatherSwatch} alt={res.selectedLeatherName} className="w-full h-full object-cover" />
+                                </span>
+                              )}
+                              <span className="text-[10px] text-[#D1C7BB]">
+                                {res.selectedLeatherName}
+                              </span>
+                            </div>
+                          )}
                         </td>
 
                         {/* Accounting */}
